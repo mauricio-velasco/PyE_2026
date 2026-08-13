@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Probabilidad y Estadística - 2026</title>
+
+  <style>
+    :root {
+      --primary: #17365d;
+      --primary-light: #24558a;
+      --accent: #e67e22;
+      --accent-light: #fff3e8;
+      --background: #f4f6f9;
+      --card: #ffffff;
+      --text: #263238;
+      --muted: #607080;
+      --border: #dce2e8;
+      --success: #287a4b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 55px 20px 50px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: -1px;
+    }
+
+    header h2 {
+      margin: 10px 0 0;
+      font-size: 1.25rem;
+      font-weight: normal;
+      color: #dcecff;
+    }
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    nav {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      margin: 0;
+    }
+
+    nav a {
+      display: block;
+      padding: 14px 18px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      background: #f8fafc;
+    }
+
+    /* =========================
+       MAIN
+       ========================= */
+
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 35px;
+      scroll-margin-top: 75px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 25px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px rgba(23, 54, 93, 0.06);
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    h3 {
+      color: var(--primary-light);
+      margin-top: 25px;
+    }
+
+    p {
+      margin: 15px 0;
+    }
+
+    /* =========================
+       LINKS
+       ========================= */
+
+    a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       LISTS
+       ========================= */
+
+    ul,
+    ol {
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    /* =========================
+       INFO GRID
+       ========================= */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-item {
+      background: #f7f9fb;
+      border-left: 4px solid var(--primary-light);
+      padding: 15px 18px;
+      border-radius: 6px;
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    /* =========================
+       BIBLIOGRAPHY
+       ========================= */
+
+    .bibliography {
+      list-style: none;
+      padding: 0;
+    }
+
+    .bibliography li {
+      background: #f8fafc;
+      border-left: 4px solid var(--accent);
+      padding: 15px 18px;
+      margin-bottom: 12px;
+      border-radius: 5px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+      font-weight: bold;
+    }
+
+    /* =========================
+       EVALUATION
+       ========================= */
+
+    .evaluation-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .evaluation-list li {
+      background: #f8fafc;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      border-radius: 7px;
+      border-left: 4px solid var(--primary-light);
+    }
+
+    .highlight {
+      background: var(--accent-light);
+      border-left-color: var(--accent) !important;
+    }
+
+    /* =========================
+       TABLE
+       ========================= */
+
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 750px;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      text-align: left;
+      padding: 15px;
+      font-size: 0.95rem;
+    }
+
+    td {
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f7f9fb;
+    }
+
+    tbody tr:hover {
+      background: #eef5fc;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      background: var(--primary);
+      color: #dcecff;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 40px 15px;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      main {
+        padding: 0 12px;
+        margin-top: 25px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      nav a {
+        padding: 10px 11px;
+        font-size: 0.9rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================
+       HEADER
+       ========================= -->
+
+  <header>
+    <h1>Probabilidad y Estadística</h1>
+    <h2>FCIEN · 2026-2</h2>
+  </header>
+
+
+  <!-- =========================
+       NAVIGATION
+       ========================= -->
+
+  <nav>
+    <ul>
+      <li><a href="#curso">Curso</a></li>
+      <li><a href="#bibliografia">Bibliografía</a></li>
+      <li><a href="#datos">Datos generales</a></li>
+      <li><a href="#evaluacion">Evaluación</a></li>
+      <li><a href="#cronograma">Cronograma</a></li>
+    </ul>
+  </nav>
+
+
+  <main>
+
+    <!-- =========================
+         CURSO
+         ========================= -->
+
+    <section id="curso">
+      <div class="card">
+
+        <h2>Sobre el curso</h2>
+
+        <p>
+          El curso es una introducción a las ideas fundamentales de la
+          probabilidad y la estadística. Estudiaremos los axiomas de la
+          probabilidad y su aplicación a modelos discretos concretos,
+          seguidos de su extensión al caso continuo.
+        </p>
+
+        <p>
+          Estudiaremos el Teorema del Límite Central y algunas desigualdades
+          de concentración simples. También se explicará la lógica de las
+          pruebas de hipótesis y algunos casos concretos.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         BIBLIOGRAPHY
+         ========================= -->
+
+    <section id="bibliografia">
+      <div class="card">
+
+        <h2>Bibliografía</h2>
+
+        <ul class="bibliography">
+
+          <li>
+            <span class="tag">MP</span>
+            <strong>Teoría de la probabilidad</strong>,
+            Ernesto Mordecki y Valentin Petrov.
+            Ediciones Dirac, Universidad de la República, 2008.
+          </li>
+
+        </ul>
+
+
+        <h3>Bibliografía complementaria</h3>
+
+        <ul class="bibliography">
+
+          <li>
+            <span class="tag">R</span>
+            <strong>Probability</strong>,
+            curso de Gian Carlo Rota en MIT (1998).
+            Notas manuscritas de John Guidi.
+            <a
+              href="https://www.ellerman.org/wp-content/uploads/2016/06/Guidi-Notes-Rota-Probability-Vol-1-2.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Ver notas
+            </a>
+          </li>
+
+          <li>
+            <span class="tag">W</span>
+            <strong>Probability with Martingales</strong>,
+            David Williams.
+            Cambridge Mathematical Textbooks,
+            Cambridge University Press (1991).
+          </li>
+
+          <li>
+            <span class="tag">RB</span>
+            <strong>
+              An Introduction to Probability and Random Processes
+            </strong>,
+            Kenneth Baclawski y Gian Carlo Rota.
+            MIT course notes.
+            <a
+              href="https://www.ellerman.org/Davids-Stuff/Maths/Rota-Baclawski-Prob-Theory-79.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Ver notas
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         GENERAL INFORMATION
+         ========================= -->
+
+    <section id="datos">
+      <div class="card">
+
+        <h2>Datos generales del curso</h2>
+
+        <ul class="info-grid">
+
+          <li class="info-item">
+            <strong>Modalidad</strong>
+            Presencial
+          </li>
+
+          <li class="info-item">
+            <strong>Responsable</strong>
+            Mauricio Velasco (CMAT)
+            <br>
+            <a
+              href="https://mauricio-velasco.github.io/webpage/"
+              target="_blank"
+              rel="noopener noreferrer">
+              Página web
+            </a>
+            <br>
+            mvelasco@cmat.edu.uy
+          </li>
+
+          <li class="info-item">
+            <strong>Ayudante</strong>
+            Anahí Vega
+            <br>
+            anahivegamz@gmail.com
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         EVALUATION
+         ========================= -->
+
+    <section id="evaluacion">
+      <div class="card">
+
+        <h2>Evaluación</h2>
+
+        <ul class="evaluation-list">
+
+          <li class="highlight">
+            <strong>Modalidad:</strong>
+            TIPO 4: Aprobación por examen con exoneración parcial.
+          </li>
+
+          <li>
+            <strong>Evaluación:</strong>
+            Dos pruebas parciales teórico-prácticas. Las evaluaciones serán
+            individuales y presenciales, y de dificultad similar a la de los
+            repartidos de práctico. Cada una será evaluada sobre 50 puntos.
+          </li>
+
+          <li>
+            <strong>
+              Requisitos mínimos para la habilitación a dar examen completo:
+            </strong>
+            Sólo se requiere sumar al menos 25 puntos entre los dos parciales.
+          </li>
+
+          <li class="highlight">
+            <strong>
+              Requisitos mínimos para la exoneración:
+            </strong>
+            Se requiere, además de sumar al menos 50 puntos entre los dos
+            parciales, un mínimo de 20 puntos en cada uno de ellos.
+          </li>
+
+          <li>
+            <strong>
+              Características y requisitos de aprobación del examen:
+            </strong>
+
+            <p>
+              El examen constará de dos partes: una práctica (exonerable)
+              y una teórica.
+            </p>
+
+            <p>
+              La parte práctica es eliminatoria, durará 4 horas y será de
+              resolución de ejercicios de dificultad similar a la de los
+              prácticos. El estudiante deberá obtener el 50% de los puntos
+              y deberá demostrar que posee algún conocimiento en cada uno
+              de los temas evaluados.
+            </p>
+
+            <p>
+              La parte teórica será un oral de unos cuarenta minutos de
+              duración, en la que se evaluará que el estudiante conozca
+              las definiciones, conceptos importantes, teoremas y ejemplos
+              tratados en el curso.
+            </p>
+
+            <p>
+              La calificación final se determinará como un promedio entre
+              la parte práctica (en caso de exoneración, esto corresponde
+              a la nota del curso) y la parte teórica.
+            </p>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         SCHEDULE
+         ========================= -->
+
+    <section id="cronograma">
+      <div class="card">
+
+        <h2>Cronograma</h2>
+
+        <p>
+          El cronograma incluye las clases y los prácticos.
+        </p>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Semana</th>
+                <th>Actividad</th>
+                <th>Referencia / Link</th>
+                <th>Información adicional</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>1</td>
+                <td>¿Qué es la probabilidad?</td>
+                <td>[MP]</td>
+                <td></td>
+                <td>—</td>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td>Bernoulli trials</td>
+                <td>[MP]</td>
+                <td></td>
+                <td>—</td>
+              </tr>
+
+
+              <tr>
+                <td>3</td>
+                <td>Borel-Cantelli</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>4</td>
+                <td>Estadísticas de Maxwell-Bolzmann</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>5</td>
+                <td>Muestreo discreto con y sin reemplazo</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+
+              <tr>
+                <td>6</td>
+                <td>Qué es una variable aleatoria?</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>7</td>
+                <td>Ejemplos de variables aleatorias</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+
+              <tr>
+                <td>8</td>
+                <td>Momentos y desigualdades de Markov-Chebyshev</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>9</td>
+                <td>PARCIAL I</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+
+
+              <tr>
+                <td>10</td>
+                <td>Leyes de grandes números y desigualdades de concentración</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>11</td>
+                <td>El teorema del límite central</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>12</td>
+                <td>Qué es la verdad estadística? Lema de Glivenko-Cantelli</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>13</td>
+                <td>Algunas pruebas de hipótesis</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>14</td>
+                <td>Qué es una cadena de Markov?</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>15</td>
+                <td>PARCIAL II</td>
+                <td>[MP]</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+
+              <!--
+
+              Aquí puedes agregar el resto de las semanas.
+
+              Ejemplo:
+
+              <tr>
+                <td>2</td>
+                <td>Variables aleatorias</td>
+                <td>[MP]</td>
+                <td>Capítulo 2</td>
+                <td>—</td>
+              </tr>
+              -->
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+
+  <footer>
+    Probabilidad y Estadística · FCIEN · 2026
+  </footer>
+
+</body>
+</html>
