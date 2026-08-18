@@ -1,0 +1,134 @@
+\documentclass[12pt]{amsart}
+\pdfoutput=1
+\usepackage{latexsym, amsmath, amssymb, amsthm, bm}
+\usepackage{calrsfs}
+\usepackage{subfig}
+
+\usepackage[mathscr]{eucal}
+\usepackage{mathtools}
+\usepackage{paralist}
+\usepackage[alphabetic]{amsrefs}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{microtype}
+\usepackage{tikz}
+\renewcommand{\baselinestretch}{1.05}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue, citecolor=blue]%
+    {hyperref}
+\linespread{1.06}
+%%--LAYOUT--------------------------------------------------------------------
+\usepackage[paperwidth=8.5in, paperheight=11in, inner=2.5cm, outer=2.5cm,% 
+    top=2.5cm, bottom=2.5cm]{geometry}
+%%--OTHER ENVIRONMENTS--------------------------------------------------------
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{proposition}[lemma]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{remark}[lemma]{Remark}
+\newtheorem{examplex}[lemma]{Example}
+\newtheorem{procedure}[lemma]{Procedure}
+
+\newenvironment{exm}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\diamond$}\examplex}
+  {\popQED\endexamplex}
+\newtheorem{question}[lemma]{Question}
+\newtheorem{conjecture}[lemma]{Conjecture}
+\newtheorem{Construction}[lemma]{Construction}
+\newtheorem{algorithm}[lemma]{Algorithm}
+%\theoremstyle{remark}
+\newcommand{\define}[1]{{\bfseries\itshape #1}}
+%%--MATH----------------------------------------------------------------------
+\newcommand{\relphantom}[1]{\mathrel{\phantom{#1}}}
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+%\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\ideal}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\coloneq}{\ensuremath{\mathrel{\mathop :}=}}
+\newcommand{\transpose}{\ensuremath{\textsf{\upshape T}}} 
+%% Blackboard bolds symbols
+\renewcommand{\AA}{\ensuremath{\mathbb{A}}} 
+\newcommand{\CC}{\ensuremath{\mathbb{C}}} 
+\newcommand{\kk}{\ensuremath{\Bbbk}} 
+\newcommand{\NN}{\ensuremath{\mathbb{N}}}
+\newcommand{\PP}{\ensuremath{\mathbb{P}}} 
+\newcommand{\QQ}{\ensuremath{\mathbb{Q}}} 
+\newcommand{\RR}{\ensuremath{\mathbb{R}}} 
+\newcommand{\EE}{\ensuremath{\mathbb{E}}} 
+
+\renewcommand{\P}{\ensuremath{P}} 
+\newcommand{\Q}{\ensuremath{Q}} 
+
+%\renewcommand{\SS}{\ensuremath{\mathbb{S}}} 
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}} 
+%% Script symbols
+\newcommand{\sC}{\ensuremath{\mathcal{C}}}
+\newcommand{\sE}{\ensuremath{\mathcal{E}}}
+\newcommand{\sF}{\ensuremath{\mathcal{F}}}
+\newcommand{\calF}{\ensuremath{\mathcal{F}}}
+\newcommand{\calL}{\ensuremath{\mathcal{L}}}
+
+\newcommand{\sH}{\ensuremath{\mathcal{H}}}
+\newcommand{\sL}{\ensuremath{\mathcal{L}}}
+\newcommand{\sO}{\ensuremath{\mathcal{O}}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Osh}{{\mathcal O}}
+\newcommand{\Ish}{{\mathcal I}}
+\newcommand{\calI}{{\mathcal I}}
+\newcommand{\calH}{{\mathcal H}}
+
+%% Operators
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\coker}{Coker}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\Cox}{Cox}
+\DeclareMathOperator{\depth}{depth}
+\DeclareMathOperator{\gon}{gon}
+\DeclareMathOperator{\Grass}{Gr}
+\DeclareMathOperator{\green}{\textit{a}}
+\DeclareMathOperator{\HH}{H}
+\DeclareMathOperator{\HHH}{\mathbb{H}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\kept}{\lambda}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\len}{\ell}
+\DeclareMathOperator{\py}{py}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\pr}{p}
+\DeclareMathOperator{\qp}{qp}
+\DeclareMathOperator{\qr}{qr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\reg}{reg}
+\DeclareMathOperator{\Sos}{\Sigma}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\sw}{sw}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\topint}{int}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\tw}{tw}
+\DeclareMathOperator{\variety}{V}
+%% Personalized comments
+\newcommand\mv[1]{{\color{blue}(MV: #1)}}
+\newcommand\mve[1]{{\color{red}(MV: #1)}}
+\newcommand\jh[1]{{\color{red}(JH: #1)}}
+
+\title{Ejercicios adicionales [E1]}
+
+\begin{document}
+\maketitle
+\end{document}
+
+\begin{enumerate}
+\item {\it Medidas de probabilidad en conjuntos finitps.} Sea $\Omega$ un conjunto finito.
+\begin{enumerate}
+\item Demuestre que para toda $\sigma$-\'algebra $\calF$ sobre $\Omega$ existe una partición $V_1,\dots, V_m$ de $\Omega$ con $V_i\in \calF$ tal que todo conjunto en $\calF$ es unión disjunta de algunos $V_i$.
+\item Demuestre que si $\alpha_1,\dots, \alpha_m$ son números reales no-negativos con $\sum \alpha_i=1$ entonces la asignación $\PP(V_j)=\alpha_j$ puede extenderse a una única medida de probabilidad en $(\Omega, \calF)$.
+\end{enumerate}
+\end{enumerate}
+\end{document}
