@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.9.28)  18 AUG 2026 13:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.9.28)  23 AUG 2026 13:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -990,7 +990,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.156 \end{enumerate}
+l.155 \end{enumerate}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -999,7 +999,7 @@ or  <return>  to continue without it.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.156 \end{enumerate}
+l.155 \end{enumerate}
                      
 Things are pretty mixed up, but I think the worst is over.
 
@@ -1013,9 +1013,9 @@ Package rerunfilecheck Info: File `E1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26884 strings out of 474222
- 481476 string characters out of 5748733
- 1936975 words of memory out of 5000000
+ 26883 strings out of 474222
+ 481469 string characters out of 5748733
+ 1934975 words of memory out of 5000000
  48418 multiletter control sequences out of 15000+600000
  605063 words of font info for 180 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -1031,10 +1031,10 @@ ype1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/
 usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on E1.pdf (1 page, 95124 bytes).
+Output written on E1.pdf (1 page, 93945 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
+ 89 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
  31757 words of extra memory for PDF output out of 35830 (max. 10000000)
 
