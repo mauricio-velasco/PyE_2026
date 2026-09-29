@@ -317,7 +317,74 @@ Definimos $\Omega=[0,1]$ definimos $\calF$ como la sigma-\'algebra m\'as pequeñ
 
 
 \section{Variables aleatorias}
+En esta sección introducimos variables aleatorias en $\RR$, sus distribuciones y sus valores esperados. 
 
+\begin{definition} Una \emph{variable aleatoria} $X$ en $(\Omega,\calF,\PP)$ es una función $X:\Omega\rightarrow \RR$ tal que para todos $a,b\in \RR$ el conjunto $\{\omega\in \Omega: a<X(\omega)\leq b\}\in \calF$. La \emph{distribución} de $X$ es la función que mide la probabilidad de que $X$ caiga en cada intervalo $(a,b]$
+\[\PP_X\left((a,b]\right):=\PP\left(\left\{\omega\in \Omega: a<X(\omega)\leq b\right\}\right)\]
+Para simplificar la notación denotamos
+\[\PP\left(\left\{\omega\in \Omega: a<X(\omega)\leq b\right\}\right)=:\PP\left\{a<X\leq b\right\}\]
+Típicamente la distribución se resume a través de la \emph{función de distribución acumulada} 
+\[F_X(\beta):=\PP\left(\left\{\omega\in \Omega: X(\omega)\leq b\right\}\right)\]
+ó usando notación menos recargada $F_X(\beta)=
+\PP\{X\leq \beta\}$.
+\end{definition}
+
+
+
+\begin{examplex} \emph{Lanzamos dos monedas justas $\{0,1\}$ y definimos la variable $X$ como el número de veces que cae $1$.}
+Como vimos en la sección anterior,el espacio de probabilidad natural es el modelo de Bernoulli con $p=q=1/2$ y $n=2$. Es decir $\Omega=\{00,01,10,11\}$, $\calF$ son todos los subconjuntos de $\Omega$ y $\PP$ es la distribución uniforme en $\Omega$ (que asigna $1/4$ a cada $\omega\in \Omega$). La función $X$ se puede tabular así:
+
+
+\begin{center}
+\begin{tabular}{c|c}
+$\omega$ & $X(\omega)$ \\
+\hline
+$00$ & $0$ \\
+$10$ & $1$ \\
+$01$ & $1$ \\
+$11$ & $2$
+\end{tabular}
+\end{center}
+
+De lo anterior vemos que la distribución de $X$ cumple: $X$ cae $0$ con prob $1/4$, cae $1$ con probabilidad $1/2$ (pues es la suma de las probabilidades de las pre-imágenes $01$ y $10$ y cada una contribuye $1/4$) y cae $2$ con probabilidad $1/4$.
+\end{examplex}
+\begin{examplex} Si en el ejemplo anterior definimos $Y$ como la cantidad de veces que cae cero entonces obtenemos una nueva variable aleatoria distinta de $X$ pues $0=X(00)\neq Y(00)=2$ luego son funciones distintas. No obstante las variables $X$ e $Y$ tienen \emph{la misma distribución}. 
+\end{examplex}
+
+
+
+\subsection{Distribuciones de probabilidad}
+
+Distinguimos variables aleatorias discretas y continuas. Luego de algunas definiciones preliminares nos ocuparemos del estudio de ejemplos concretos.
+
+\begin{definition} Sea $D\subseteq \RR$ un conjunto discreto.
+. Una funci\'on $f_X:D\rightarrow \RR$ es  la densidad de una variable aleatoria discreta $X$ en $D$ si cumple:
+\begin{enumerate}
+\item $\forall d\in D\left(f_X(d)\geq 0\right)$
+\item $\sum_{d\in D} f_X(d)=1$
+\end{enumerate}  
+La \emph{función de distribución acumulada} de la variable discreta $X$ es la función
+\[F(\beta):=\sum_{d\in D: d\leq \beta} f_X(d)\] 
+El \emph{valor esperado} de la variable $X$ es el número
+\[\EE[X]:=\sum_{d\in D} d f_X(d).\]
+\end{definition}
+
+
+Sea $[a,b]\subseteq \RR$ un intervalo (permitiendo $a=-\infty$ y $b=\infty$).
+\begin{definition} Una funci\'on $f_X:[a,b]\rightarrow \RR$ es la densidad de una variable aleatoria absolutamente continua $X$ en $D$ si cumple:
+\begin{enumerate}
+\item $\forall x\in [a,b]\left(f_X(x)\geq 0\right)$
+\item $\int_a^bf_X(x)dx = 1$
+\end{enumerate}
+La \emph{función de distribución acumulada} de la variable absolutamente continua $X$ es la función
+\[F_X(\beta):=\int_a^{\beta} f_X(x)dx\] 
+El \emph{valor esperado} de la variable $X$ es el número
+\[\EE[X]:=\int_a^b x f_X(x)\]
+\end{definition}
+
+Notar que tanto en el caso discreto como el continuo la función $F_X(\beta)=\PP\{X\leq \beta\}$.
+
+\subsection{Ejemplos de variables aleatorias escalares ($1D$)}
 
 
 
