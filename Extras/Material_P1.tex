@@ -353,7 +353,7 @@ De lo anterior vemos que la distribución de $X$ cumple: $X$ cae $0$ con prob $1
 
 
 
-\subsection{Distribuciones de probabilidad}
+\subsection{Distribuciones de probabilidad de variables aleatorias escalares}
 
 Distinguimos variables aleatorias discretas y continuas. Luego de algunas definiciones preliminares nos ocuparemos del estudio de ejemplos concretos.
 
@@ -386,9 +386,10 @@ Notar que tanto en el caso discreto como el continuo la función $F_X(\beta)=\PP
 
 \subsection{Ejemplos de variables aleatorias escalares ($1D$)}
 
-En esta subsección ilustramos gráficamente algunas de las distribuciones de probabilidad más comunes para variables aleatorias escalares. En cada figura se marca la media $\EE[X]$ con una línea vertical.
+En esta subsección ilustramos algunas de las distribuciones de probabilidad más comunes para variables aleatorias escalares. En cada figura se marca la media $\EE[X]$ con una línea vertical. 
 
-\paragraph{Distribución binomial.} La variable $X\sim \mathrm{Binomial}(n,p)$ tiene masa de probabilidad $\PP\{X=k\}=\binom{n}{k}p^k(1-p)^{n-k}$, media $\EE[X]=np$ y varianza $\mathrm{Var}(X)=np(1-p)$. En la figura se superponen dos casos distintos, $\mathrm{Binomial}(40,\,\frac{1}{4})$ (media $np=10$) y $\mathrm{Binomial}(90,\,\frac{1}{3})$ (media $np=30$), con el fin de apreciar el rango de formas que admite la familia binomial: la media $np$ desplaza la distribución y los parámetros $n$ y $p$ determinan su dispersión (varianza $np(1-p)$).
+\begin{itemize}
+\item {\it Distribución binomial}. La variable $X\sim \mathrm{Binomial}(n,p)$ tiene densidad discreta para $k\in \{0,1,\dots, n\}$ con $\PP\{X=k\}=\binom{n}{k}p^k(1-p)^{n-k}$, media $\EE[X]=np$ y varianza $\mathrm{Var}(X)=np(1-p)$. En la figura se superponen dos casos distintos, $\mathrm{Binomial}(40,\,\frac{1}{4})$ (media $np=10$) y $\mathrm{Binomial}(90,\,\frac{1}{3})$ (media $np=30$), con el fin de apreciar el rango de formas que admite la familia binomial: la media $np$ desplaza la distribución y los parámetros $n$ y $p$ determinan su dispersión. 
 
 \begin{figure}[h]
 \centering
@@ -397,7 +398,7 @@ En esta subsección ilustramos gráficamente algunas de las distribuciones de pr
 \label{fig:binomial_pmf_example}
 \end{figure}
 
-\paragraph{Distribución de Poisson.} La variable $X\sim \mathrm{Poisson}(\lambda)$ tiene masa de probabilidad $\PP\{X=k\}=\frac{\lambda^k e^{-\lambda}}{k!}$, media $\EE[X]=\lambda$ y varianza $\mathrm{Var}(X)=\lambda$. En la figura se superponen los casos $\lambda=10$ y $\lambda=20$, mostrando cómo $\lambda$ desplaza la distribución y, al mismo tiempo, aumenta su dispersión (en Poisson, media y varianza coinciden, ambas iguales a $\lambda$).
+\item {\it Distribución de Poisson.} La variable $X\sim \mathrm{Poisson}(\lambda)$ tiene distribución discreta en los enteros positivos $k$  con densidad $\PP\{X=k\}=\frac{\lambda^k e^{-\lambda}}{k!}$, media $\EE[X]=\lambda$ y varianza $\mathrm{Var}(X)=\lambda$. En la figura se superponen los casos $\lambda=10$ y $\lambda=20$, mostrando cómo $\lambda$ desplaza la distribución y, al mismo tiempo, aumenta su dispersión (en Poisson, media y varianza coinciden, ambas iguales a $\lambda$).
 
 \begin{figure}[h]
 \centering
@@ -406,7 +407,10 @@ En esta subsección ilustramos gráficamente algunas de las distribuciones de pr
 \label{fig:poisson_pmf_example}
 \end{figure}
 
-\paragraph{Distribución gaussiana (normal).} La variable $X\sim \mathrm{Normal}(\mu,\sigma)$ tiene densidad $f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$, media $\EE[X]=\mu$ y varianza $\mathrm{Var}(X)=\sigma^2$. En la figura se comparan $\mathrm{Normal}(0,1)$, $\mathrm{Normal}(0,2)$ y $\mathrm{Normal}(3,1)$, observando el efecto de la media y de la desviación estándar.
+\item {\it Distribución gaussiana (normal).} La variable $X\sim \mathrm{Normal}(\mu,\sigma)$ tiene densidad continua
+
+\[f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\]
+media $\EE[X]=\mu$ y varianza $\mathrm{Var}(X)=\sigma^2$. En la figura se comparan $\mathrm{Normal}(0,1)$, $\mathrm{Normal}(0,2)$ y $\mathrm{Normal}(3,1)$, observando el efecto de la media y de la desviación estándar.
 
 \begin{figure}[h]
 \centering
@@ -414,179 +418,101 @@ En esta subsección ilustramos gráficamente algunas de las distribuciones de pr
 \caption{Función de densidad de la distribución gaussiana para $\mu=0,\sigma=1$; $\mu=0,\sigma=2$; y $\mu=3,\sigma=1$. Las líneas verticales marcan la media $\mu$ de cada distribución.}
 \label{fig:gaussian_pdf_example}
 \end{figure}
+\end{itemize}
 
+\newpage 
+\subsection{Distribuciones de probabilidad de variables aleatorias escalares}
 
-
-
-
-\end{document}
-
-
-
-
-
-
-\begin{enumerate}
-\end{enumerate}
-
-
-\end{enumerate}
-\end{enumerate}
+\begin{definition} Un \emph{Vector aleatorio} $(X,Y)$ en $\RR^2$ en el espacio $(\Omega,\calF,\PP)$ es una función $(X,Y): \Omega\rightarrow \RR^2$ tal que para todos $(\beta_1,\beta_2)\in \RR^2$ se cumple  que 
+\[\left\{\omega\in \Omega: X(\omega)\leq \beta_1\text{ y simultáneamente } Y(\omega)\leq \beta_2\right\}\in \calF.\]
+La \emph{densidad acumulada} de un vector aleatorio es la función
+\[F_{(X,Y)}(\beta_1,\beta_2):=\PP\left\{\omega\in \Omega: X(\omega)\leq \beta_1\text{ y  } Y(\omega)\leq \beta_2\right\}.\]
+Decimos que un vector aleatorio $(X,Y)$ tiene \emph{densidad conjunta absolutamente continua $f_{(X,Y)}(x,y)$} si para toda región $R$ medible en el plano se cumple que
+\[\PP\{(X,Y)\in R\}:=\iint_R f_{(X,Y)}(x,y)dA\] 
+y en particular
+\[F_{(X,Y)}(\beta_1,\beta_2)=\int_{-\infty} ^{\beta_1}\int_{-\infty}^{\beta_2} f_{(X,Y)}(x,y)dydx\]
 \end{definition}
 
-\end{document}
+\begin{remark} De manera semejante definimos vectores aleatorios $(X_1,\dots, X_d)\in \RR^d$ sus distribuciones acumuladas y densidades conjuntas $f_{(X_1,\dots, X_d)}(x_1,\dots, x_d)$
+\end{remark}
 
+
+\begin{definition} La \emph{distribución marginal} en $X$ de un vector aleatorio $(X,Y)$ es la distribución de la primera componente, es decir la distribución de los valores de $X$ si ignoramos el valor de la segunda componente. Es inmediato que podemos calcular la distribución acumulada y la densidad (marginal) de $X$ mediante las fórmulas
+\[F_X(\beta_1):=\int_{-\infty}^{\beta_1}\left(\int_{-\infty}^{\infty} f_{(X,Y)}(x,y)dy\right)dx\]
+\[f_X(x)=\int_{-\infty}^\infty f_{(X,Y)}(x,y)dy.\]
+De manera semejante podemos calcular las marginales de la variable $Y$ integrando sobre todos los valores posibles de $X$.
+\end{definition}
+
+
+\begin{examplex}
+Una distribución conjunta no esta determinada por sus distribuciones marginales. En el ejemplo vemos dos distribuciones gaussianas con las mismas marginales pero distintas distribuciones conjuntas. En la figura~\ref{fig:bivariate_same_marginals} se ven dos gaussianas bivariadas con marginales idénticas ($X\sim N(0,1)$ y $Y\sim N(0,1)$, curvas grises en la parte superior y en la derecha de cada panel) pero con distribución conjunta distinta: Como veremos más adelante es posible distinguir las distribuciones conjuntas mediante sus \emph{coeficientes de correlación} $\rho=+0.8$ (izquierda) frente a $\rho=-0.8$ (derecha).
+\end{examplex}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{bivariate_gaussian_same_marginals.png}
+\caption{Dos distribuciones gaussianas conjuntas con las \emph{mismas} marginales ($X\sim N(0,1)$ y $Y\sim N(0,1)$, curvas grises en la parte superior y en la derecha de cada panel) pero con distribución conjunta distinta: $\rho=+0.8$ (izquierda) y $\rho=-0.8$ (derecha). La distribución conjunta no queda determinada por sus distribuciones marginales.}
+\label{fig:bivariate_same_marginals}
+\end{figure}
+
+Bajo la hipótesis adicional de \emph{independencia entre las componentes} un vector aleatorio queda completamente determinado por sus merginales. Más precisamente
+
+\begin{definition} Un vector aleatorio $(X,Y)$ tiene componentes independientes si para todo rectángulo $[a,b]\times [c,d]$ tenemos la igualdad
+\[\PP\left\{(X,Y)\in [a,b]\times [c,d]\right\} = \PP\left\{X\in [a,b]\right\}\PP\left\{Y\in [c,d]\right\}\]
+\end{definition}
+Como la condición de arriba depende de todos los rectángulos podría parecer que verificar la condición de independencia es dificil. El siguiente Lema asegura que esta es \emph{equivalente a una propiedad de factorización de la densidad conjunta como producto de densidades marginales} que es fácil de verificar.
+
+\begin{lemma} Las siguientes propiedades son equivalentes para un vector $(X,Y)$ aleatorio con densidad $f_{(X,Y)}(x,y)$ absolutamente continua:
 \begin{enumerate}
-\item \emph{Fundamentos de Álgebra Lineal:}
-\begin{enumerate}
-\item \emph{Teorema espectral (en dim finita)}
-
-\begin{theorem}Toda matriz simétrica es ortogonalmente diagonalizable (sobre $\RR$).\end{theorem}
-Más generalmente toda matriz normal ($A\in \CC^{n\times n}$ es normal $AA^*=A^*A$) es unitariamente diagonalizable (sobre $\CC$).
-\item \emph{Descomposición en valores singulares:}
-\begin{theorem} Si $A\in \RR^{m\times n}$ entonces existen matrices ortogonales $U\in \RR^{m\times m}$ y $V\in \RR^{n\times n}$ y una matriz $\Sigma$ diagonal con entradas reales tales que:
-\[A=U\Sigma V^T\]
-\end{theorem}
-M\'as precisamente, podemos asumir que las entradas diagonales no nulas de $\Sigma$ son n\'umeros $\sigma_1\geq \dots \geq  \sigma_r>0$ donde $r={\rm rank}(A)$. Estos números se llaman los {\bf valores singulares} de $A$. 
-
-Observaciones:
-
-\begin{itemize}
-\item La demostración de existencia es constructiva (si pudiéramos calcular valores y vectores propios, lo que haremos más adelante) pues se reduce a que:
-\begin{enumerate}
-\item Las columnas de $U$ pueden ser una base ortonormal de vectores propios de $AA^T$ (con $AA^Tu_i=\sigma_i^2u_i$), extendida a una base ortonormal del espacio completo si el rango lo requiere.
-\item Las columnas de $V$ pueden ser una base ortonormal de vectores propios de $A^TA$ (con $A^tAv_i=\sigma_i^2v_i$), extendida a una base ortonormal del espacio completo si el rango lo requiere.
-\item Los valores singulares son las raíces de los valores propios no nulos de $AA^T$ \'o $A^TA$. Esto demuestra la unicidad de los valores singulares y tambien explica en qué sentido falla la unicidad de $U$ y $V$.
-\end{enumerate}
-\item $\Sigma$ es, en general una matrix rectangular del mismo formato que $A$ y sus únicas entradas no nulas estan sobre la diagonal.
-\item La descomposición de arriba permite, sumando sobre las entradas diagonales, escribir 
-\[A=\sum_{i=1}^r \sigma_i u_iv_i^t\]
-expresando $A$ como suma de $r$ matrices de rango uno.
-\item Todo lo anterior es válido sobre $\CC$, donde $A\in \CC^{m\times n}$ y las matrices $U$ y $V$ son unitarias, llevando a una descomposición 
-\[A=U\Sigma V^*\]
-\end{itemize}
-\end{enumerate}
-
-\item \emph{Normas:}
-\begin{enumerate}
-\item Conocer el enunciado de la desigualdad de Holder y poder usarla para demostrar que $\|\bullet\|_p$ es norma en $\RR^n$ para $p\geq 1$. Saber demostrar:
-
-\begin{theorem}
-En un espacio vectorial de dimensión finita, todo par de normas son equivalentes.
-\end{theorem}
-
-
-\item \emph{Normas inducidas en espacios de matrices} Definición de la norma inducida sobre operadores $T:V\rightarrow W$ por normas $\|\cdot\|_V$ y $\|\cdot\|_W$ en $V$ y $W$
-\[\|T\|_{\rm op}:=\sup_{v\in V\setminus\{0\}} \frac{\|Tv\|_W}{\|v\|_V}.\] 
-Saber demostrar que es norma y que cumple $\|Tv\|_W\leq \|T\|_{\rm op}\|v\|_V$. 
-
-\item Saber calcular $\|T\|_{\rm op,1,1}$, $\|T\|_{\rm op,\infty,\infty}$ en términos de las entradas de $T$ y expresar $\|T\|_{\rm op,2,2}$ en términos de valores singulares.  
-\end{enumerate}
-
-
-\item \emph{Números de condición y backward stability:}
-
-\begin{enumerate}
-\item Saber la definición formal de {\bf número de condición} y de {\bf número de condición absoluto} en un punto $x\in V$ de una función $f:V\rightarrow W$ entre espacios normados $V$ y $W$ (denotados $k(x,f)$ y $\tilde{k}(x,f)$ respectivamente).
-
-\item Poder demostrar formalmente que el número de condición de {\it resolver el sistema lineal} $Ax=b$ para $b$ fijo esta acotado, para una matriz invertible $A$ por $k(A):=\|A\|\|A^{-1}|$. Si $\|\bullet\|:=\|\bullet\|_{\rm op,2,2}$ poder expresar $k(A)$ en términos de los valores singulares de $A$.
-
-\item Entender la definición de backward-stable:
-Para $\epsilon_0>0$ decimos que $\tilde{f}:V\rightarrow W$ es $\epsilon_0$-backward-stable con respecto a $f:V\rightarrow W$ si 
-$\forall x\in V \exists \tilde{x}$ que cumple:
-\begin{enumerate}
-\item $\tilde{f}(x)=f(\tilde{x})$ 
-\item $\|x-\tilde{x}\|\leq \epsilon_0\|x\|$
-\end{enumerate}
-
-\item Poder demostrar:
-\begin{enumerate}
-\item  Que una implementación del producto de números $x\ast y$ que garantice 
-\[x\ast y = xy(1+\epsilon_0)\]
-para todos $x,y$ es $\epsilon_0$-backward stable.
-\item Que el producto interno de vectores en $\RR^n$, implementado con operaciones de producto y suma como las anteriores es backward-stable para algún múltiplo explícito de $\epsilon_0$ (para todo $\epsilon_0$ suficientemente pequeño). 
-
-\item \emph{Uso de backward stability:}
-\begin{theorem} Si $\tilde{f}$ es una implementación $\epsilon_0$-backward stable de $f$ entonces el error relativo en $x$ esta controlado por el número de condición $K(x,f)$  de $f$ en $x$. Más precisamente, si $f(x)\neq 0$ tenemos la siguiente desigualdad
-\[\frac{\|\tilde{f}(x)-f(x)\|}{\|f(x)\|}\leq K(x,f)\epsilon_0\]
-\end{theorem}
-
-\item \begin{theorem} Resolver un sistema lineal triangular inferior mediante sustitución hacia atrás es backward-stable.
-\end{theorem} 
-Saber la demostración para sistemas $2\times 2$ (la idea en general es la misma y solo requiere más cálculos)
-
-\end{enumerate}
-
-
-\end{enumerate}
-\item \emph{Factorización LU}:
-\begin{enumerate}
-\item Saber qué es la factorización $LU$ de una matriz cuadrada $A$.
-\item Cómo usarías una factorización $A=LU$ conocida para resolver el sistema $Ax=b$? Qué puedes decir del número de condición y del error relativo de ese algoritmo?
-\item Demostrar que si $A$ es invertible y la factorización $LU$ existe entonces es única. Existe siempre tal factorización? De existir es siempre única (removiendo el requisito de invertibilidad de $A$)?
-
-\item Calcular la factorización $LU$ de la matriz 
-$\begin{pmatrix}
-\epsilon & 1 \\
-1 & 1
-\end{pmatrix}$
-para $\epsilon\neq 0$. Notar la descomposición $LU$ no existe cuando $\epsilon=0$. Qué pasa con los números de condición de los factores $L$ y $U$ cuando $\epsilon\rightarrow 0$?
-
-
-\item \emph{Criterio de existencia útil, sin pivoteo y consecuencias en matrices simétricas} Sea $A\in \RR^{n\times n}$ una matriz y sea $A_{\leq p}$ la submatriz cuadrada con índices de filas y columnas $\leq p$.
-
-\begin{theorem} Si $\det(A_p)\neq 0$ para todo $p$ entonces existe una matriz triangular inferior con diagonal de $1$'s $L$ y una matriz triangular superior $U$ tal que $A=LU$.
-\end{theorem}
-
-\begin{theorem} [Sylvester + factorización de Cholesky] Si $A$ es simétrica y $\det(A_p)>0$ para todo $p$ entonces existe una única matriz invertible, triangular inferior $C$ con entradas positivas en la diagonal que cumple $A=CC^T$.
-\end{theorem}
-
-Más generalmente, si $\det(A_p)\neq 0$ para todo $p$ y $A$ es simétrica entonces existe una descomposición $A=LDL^T$ donde $L$ es triangular inferior con diagonal de unos y $D$ es una matriz diagonal.
-
-\item Saber que, por Gauss-Jordan, TODA matriz admite una descomposición $LU$ con pivoteo $PA=LU$ para alguna permutación $P$. \emph{Dato curioso (sin dem.)} para TODA matriz simétrica $A$ existe una permutación $P$ tal que $P^T A P = LDL^T$ donde $L$ es triangular inferior con unos en la diagonal, $D$ es diagonal \emph{por bloques} donde todos los bloques tienen tamaño $2\times 2$ ó $1\times 1$). Ejemplo: $\begin{pmatrix}
-0 & 1 \\
-1 & 0
-\end{pmatrix}$ necesita bloques $2\times 2$.
-\end{enumerate}
-
-\item {\it Factorización QR}:
-\begin{enumerate}
-
-\item \begin{theorem} Una matriz $Q\in \RR^{n\times n}$ es \emph{ortogonal} si satisface cualquiera de las siguientes propiedades equivalentes:
-\begin{enumerate}
-\item $\|Qx\|_2=\|x\|_2$ para todo $x\in \RR^n$.
-\item $\langle Qx,Qy\rangle = \langle x,y\rangle $ para todos $x,y\in \RR^n$.
-\item $QQ^T=Id$ (ó equivalentemente $Q^TQ=I$). 
-\end{enumerate}
-\end{theorem}
-
-\item La {\bf reflexión de Householder} ortogonal al vector unitario $w\in \RR^n$ es la transformación
-\[H_w(x)=x-2\frac{\langle w,x\rangle}{\langle w,w\rangle} w\]
-Definimos $H_0(x):=x$. Saber demostrar sus propiedades principales, resumidas en el siguiente Lema,
-\begin{lemma} Las siguientes propiedades son ciertas si $w\neq 0$,
-\begin{enumerate}
-\item $H_w$ es la reflexión respecto al hiperplano perpendicular a $w$.
-\item $H_w$ es simétrica, ortogonal y $\det(H_w)=-1$.
-\item Para todo vector $a\in \RR^n$ existe un vector unitario $w$ ó $w=0$ tal que $H_w(a)=\|a\|e_1$ donde $e_1=(1,0,\dots,0)$ es el primer vector de la base canónica.
+\item Las componentes $X,Y$ del vector $(X,Y)$ son variables aleatorias independientes.
+\item La siguiente igualdad ocurre entre las densidades acumuladas
+\[F_{(X,Y)}(\beta_1,\beta_2)=F_X(\beta_1)\cdot F_Y(\beta_2)\]
+para todo $\beta_1,\beta_2$
+\item Si $f_X(x)$ y $f_Y(y)$ son las densidades marginales de $(X,Y)$ entonces
+\[f_{(X,Y)}(x,y)=f_{X}(x)\cdot f_{Y}(y)\]
+para todos $(x,y)\in \RR^2$
 \end{enumerate}
 \end{lemma}
 
+\subsection{Distribuciones conjuntas de vectores aleatorios}
+Esta sección reune algunos ejemplos de usos de densidades conjuntas.
 
-\item Conocer la demostración del siguiente Teorema, usando reflexiones de Householder
-\begin{theorem} Para toda matriz $A\in \RR^{m\times n}$ con $m\geq n$ existe una matriz ortogonal $Q$ y una matriz triangular superior $R$ tal que $A=QR$.
-\end{theorem}
+\begin{examplex} Suponga que $X$ e $Y$ son variables aleatorias normales standard e INDEPENDIENTES. Calcule la densidad de $X^2+Y^2$.
+\end{examplex}
 
-\item Saber explicar formalmente la frase {\it existe una implementación backward-stable de la factorización $QR$}.
+\begin{examplex} Suponga que $X$ e $Y$ son variables aleatorias normales standard e INDEPENDIENTES. Cómo es la densidad conjunta de las coordenadas polares $(R,\theta)$ del punto $(X,y)$?
+\end{examplex}
 
-\item Poder demostrar que el número de condición de $A$ es igual al número de condición de $R$ si $A=QR$. Cómo se podría usar la factorización $QR$ para resolver el sistema lineal $Ax=b$ cuando $A$ es invertible y qué tipo de garantías sobre el error podemos demostrar?
+\begin{examplex} Suponga que $X$ e $Y$ son variables aleatorias normales standard e INDEPENDIENTES. Cómo es la densidad conjunta de l vector aleatorio $(Z,W)$ definido mediante el producto de matrices
+\[
+\left(\begin{array}{c}
+Z \\
+W \\
+\end{array}\right)=
+\left(\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}\right)
+\left(\begin{array}{c}
+X \\
+Y \\
+\end{array}\right)
+\]
+donde $a,b,c,d$ son números reales dados.
+\end{examplex}
 
-\item Suponga que $A\in \RR^{m\times n}$ con $m\leq n$. Poder explicar cómo puede usarse la factorización de $QR$ de la matriz $A$ para resolver el problema de regresión lineal
-\[\min_{x\in \RR^n} \|Ax-b\|_2^2\]
-reduciéndolo a resolver cierto sistema lineal triangular. Qué sucede si ${\rm rank}(A)<n$?
-
-\end{enumerate}
 
 
-\end{enumerate}
+
+
+
+
+
 
 \end{document}
+
+
+
+
+
+

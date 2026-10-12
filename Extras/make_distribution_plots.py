@@ -4,6 +4,10 @@ Produces (in the same directory as this script):
   - binomial_pmf.png : Bin(40, 1/4) and Bin(90, 1/3)  [PMF, overlaid on one axes, mean lines]
   - poisson_pmf.png  : Pois(10) and Pois(20)           [PMF, overlaid on one axes, mean lines]
   - gaussian_pdf.png : N(0,1), N(0,2), N(3,1)         [PDF, vertical lines at the means]
+  - bivariate_gaussian_same_marginals.png :
+      two 2D Gaussians with the SAME marginals (X,Y ~ N(0,1)) but DIFFERENT
+      joint distributions (rho = +0.8 vs rho = -0.8), with the shared marginal
+      density curves drawn on the top and right edges of each panel.
 """
 import os
 
@@ -113,7 +117,73 @@ fig.tight_layout()
 fig.savefig(os.path.join(OUT, "gaussian_pdf.png"), dpi=DPI, bbox_inches="tight")
 plt.close(fig)
 
+# ---------------------------------------------------------------------------
+# (4) Bivariate Gaussian -- SAME marginals, DIFFERENT joint distribution.
+#     Both panels have X ~ N(0,1) and Y ~ N(0,1) (identical marginals, shown as
+#     the curves on the top and right edges), but different correlation:
+#     rho = +0.8 (left) vs rho = -0.8 (right) -> different joint distributions.
+#     The two panels use the SAME axis range so the only difference is the shape
+#     of the joint density (i.e. the correlation).
+# ---------------------------------------------------------------------------
+from scipy.stats import multivariate_normal
+
+def _draw_biv_panel(fig, x0, y0, w, h, rho, cmap):
+    cov = np.array([[1.0, rho], [rho, 1.0]])
+    mvn = multivariate_normal(mean=[0.0, 0.0], cov=cov)
+    xs = np.linspace(-4, 4, 401)
+    X, Y = np.meshgrid(xs, xs)
+    Z = np.column_stack([X.ravel(), Y.ravel()])
+    P = mvn.pdf(Z).reshape(X.shape)
+    marg = norm.pdf(xs, loc=0.0, scale=1.0)  # identical for both panels
+
+    # Main panel: 2D joint density (filled contour + a few contour lines)
+    ax = fig.add_axes([x0, y0, w, h])
+    ax.contourf(X, Y, P, levels=18, cmap=cmap, alpha=0.92)
+    ax.contour(X, Y, P, levels=7, colors="0.15", linewidths=0.6, alpha=0.55)
+    ax.set_xlim(-4, 4)
+    ax.set_ylim(-4, 4)
+    ax.set_xlabel("x", fontsize=11)
+    ax.set_ylabel("y", fontsize=11)
+    ax.grid(False)
+
+    # Top marginal  (density of X) -- identical in both panels
+    gap = 0.04
+    ax_top = fig.add_axes([x0, y0 + h + gap, w, 0.08], sharex=ax)
+    ax_top.plot(xs, marg, color="0.28", lw=1.5)
+    ax_top.fill_between(xs, 0, marg, color="0.28", alpha=0.28)
+    ax_top.set_xticks([])
+    ax_top.tick_params(axis="y", length=0, labelleft=False)
+    ax_top.set_ylim(0, 1.0)
+    ax_top.grid(False)
+    ax_top.set_ylabel(r"$f_X(x)$", fontsize=9)
+
+    # Right marginal (density of Y) -- identical in both panels
+    ax_right = fig.add_axes([x0 + w + gap, y0, 0.08, h], sharey=ax)
+    ax_right.plot(marg, xs, color="0.28", lw=1.5)
+    ax_right.fill_betweenx(xs, 0, marg, color="0.28", alpha=0.28)
+    ax_right.set_yticks([])
+    ax_right.tick_params(axis="x", length=0, labelbottom=False)
+    ax_right.set_xlim(0, 1.0)
+    ax_right.grid(False)
+    ax_right.set_xlabel(r"$f_Y(y)$", fontsize=9)
+
+
+fig = plt.figure(figsize=(11.0, 5.4))
+_w, _h, _y0 = 0.2749, 0.56, 0.16
+_draw_biv_panel(fig, 0.08,  _y0, _w, _h, +0.8, "Blues")
+_draw_biv_panel(fig, 0.545, _y0, _w, _h, -0.8, "Oranges")
+fig.text(0.08 + _w / 2,  0.895, r"$\rho = +0.8$", ha="center",
+         fontsize=13, weight="bold")
+fig.text(0.545 + _w / 2, 0.895, r"$\rho = -0.8$", ha="center",
+         fontsize=13, weight="bold")
+fig.suptitle("Gaussianas con igual marginales ($X, Y \\sim N(0,1)$) "
+             "y distinta conjunta", fontsize=12.5, y=0.985)
+fig.savefig(os.path.join(OUT, "bivariate_gaussian_same_marginals.png"),
+            dpi=DPI, bbox_inches="tight")
+plt.close(fig)
+
 print("Saved:")
-for name in ("binomial_pmf.png", "poisson_pmf.png", "gaussian_pdf.png"):
+for name in ("binomial_pmf.png", "poisson_pmf.png", "gaussian_pdf.png",
+             "bivariate_gaussian_same_marginals.png"):
     path = os.path.join(OUT, name)
     print(f"  {path}  ({os.path.getsize(path)} bytes)")
