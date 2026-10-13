@@ -144,7 +144,7 @@ Los enunciados marcados con Lema o Teorema son fundamentales y hay que conocer s
 \end{enumerate}
 \item $\PP$ es una \emph{medida de probabilidad}, es decir una funci\'on $\PP: \calF\rightarrow \RR$ que cumple:
 \begin{enumerate}
-\item (\emph{no-nonegatividad}) $\forall A\in \calF\left(\PP(A)\geq 0\right)$
+\item (\emph{no-negatividad}) $\forall A\in \calF\left(\PP(A)\geq 0\right)$
 \item (\emph{máximo uno}) $\PP(\Omega)=1$
 \item (\emph{es $\sigma$-aditiva sobre conjuntos disjuntos}) Si $A_j$, $j=1,2,3,\dots$ es una colección de conjuntos disjuntos (i.e. si $A_i\cap A_j=\emptyset$ para $i\neq j$) con $A_j\in \calF$ entonces 
 \[\PP\left(\bigcup_{j=0}^\infty A_j\right)=\sum_{j=0}^{\infty} \PP(A_j)\]
@@ -170,7 +170,7 @@ Más generalmente si $A,B,C$ son tres eventos cualquiera se tiene que
 
 \subsection{Ejemplo 1: La probabilidad clásica ó la medida Uniforme sobre conjuntos finitos}
 
-Si $\Omega$ es un conjunto finito cualquiera definimos $\calF$ como la coleccion de todos los subconjuntos de $\Omega$ y $\PP(A):=\frac{|A|}{|\Omega|}$ para cualquier subconjunto $A\subseteq \Omega$. Es fácil verificar que $(\Omega,\calF,\PP)$ es un espacio de probabilidad llamado \emph{probabilidad uniforme en $\Omega$}.
+Si $\Omega$ es un conjunto finito cualquiera definimos $\calF$ como la colección de todos los subconjuntos de $\Omega$ y $\PP(A):=\frac{|A|}{|\Omega|}$ para cualquier subconjunto $A\subseteq \Omega$. Es fácil verificar que $(\Omega,\calF,\PP)$ es un espacio de probabilidad llamado \emph{probabilidad uniforme en $\Omega$}.
 Por definición la probabilidad uniforme se calcula contando cuántos casos favorables hay $|A|$ y dividiéndolo sobre el número de casos totales $|\Omega|$. La rama de las matemáticas que se ocupa de contar se llama combinatoria. Para poder resolver problemas de conteo necesitamos algunos fundamentos de combinatoria que resumimos a continuación en las
 
 {\bf Reglas de conteo:}
@@ -189,7 +189,7 @@ El siguiente Lema contiene algunas propiedades básicas de combinatoria que usar
 \item El número de palabras de longitud $n$ en los símbolos $1,2,\dots,k$ en las que cada símbolo se usa a lo más una vez es
 \[k(k-1)(k-2)\dots (k-n+1)=\frac{k!}{(k-n)!}\]
 
-\item El número de subconjuntos de tamaño $k$ de un conjunto de $n$ items, denotado $\binom{n}{k}$ esta dado por
+\item El número de subconjuntos de tamaño $k$ de un conjunto de $n$ items, denotado $\binom{n}{k}$ está dado por
 \[\binom{n}{k}=\frac{n!}{k!(n-k)!}\]
 \end{enumerate}
 
@@ -197,7 +197,7 @@ El siguiente Lema contiene algunas propiedades básicas de combinatoria que usar
 
 
 \begin{examplex}
-Una baraja consiste de $52$ cartas. Cada carta tiene una pinta (diamantes, corazones, picas o tréboles) y en cada pinta tiene uno de trece símbolos
+Una baraja consiste en $52$ cartas. Cada carta tiene una pinta (diamantes, corazones, picas o tréboles) y en cada pinta tiene uno de trece símbolos
 $1,2,\dots,10,J,Q,K$ (el uno también se llama As). Hay pintas de dos colores, rojas y negras: diamantes y corazones son rojas y las demás negras.
 
 En el juego del Poker se reparten \emph{uniformemente} $5$ cartas a cada jugador. Calcule las probabilidades de que un jugador tenga cada una de las siguientes manos:
@@ -229,7 +229,7 @@ En el juego del Poker se reparten \emph{uniformemente} $5$ cartas a cada jugador
 Los Bernoulli trials son un modelo probabilista para la siguiente situación: \emph{Se lanzan $n$ monedas independientemente. Cada una de las monedas tiene dos lados (llamados $0$ y $1$). Sabemos que la probabilidad de que cada moneda salga $1$ es un número conocido $p\in [0,1]$.}
 
 
-Para poder formalizar el concepto de independencia debemos entender cómo debe alterarse la probabilidad cuando sabemos que un evento $B$ ha ocurrido. Esto esta capturado por la probabilidad condicional $\PP(A|B)$.
+Para poder formalizar el concepto de independencia debemos entender cómo debe alterarse la probabilidad cuando sabemos que un evento $B$ ha ocurrido. Esto está capturado por la probabilidad condicional $\PP(A|B)$.
 
 \begin{definition} Si $B\in \calF$ es un evento con $\PP(B)>0$ definimos, para cualquier $A\in \calF$ la \emph{probabilidad condicional de $A$ dado $B$} mediante la fórmula
 \[\PP\left(A|B\right)=\frac{\PP\left(A\cap B\right)}{\PP\left(B\right)}\]
@@ -244,12 +244,12 @@ Generalizando lo anterior definimos
 \begin{definition} Un conjunto de eventos $A_1,\dots, A_n$ se dicen \emph{eventos $\PP$-independientes} si para cualquier subconjunto de índices $I\subseteq \{1,\dots, n\}$ tenemos la igualdad
 \[\PP\left(\bigcap_{j\in I} A_j\right)=\prod_{j\in I} \PP(A_j)\]
 \end{definition}
-\begin{remark} En la literatura en probabilidades típicamente se escribe \emph{independientes} en lugar de $\PP$-independientes. No obstante la independencia no solo depende de los eventos $A,B$ sino tambien de la medida de probabilidad que estemos usando.
+\begin{remark} En la literatura en probabilidades típicamente se escribe \emph{independientes} en lugar de $\PP$-independientes. No obstante la independencia no solo depende de los eventos $A,B$ sino también de la medida de probabilidad que estemos usando.
 \end{remark}
 
 \begin{examplex} (\emph{Bernoulli trials}) Se lanzan $n$ monedas independientemente. Cada una de las monedas tiene dos lados (llamados $0$ y $1$). Sabemos que la probabilidad de que cada moneda salga $1$ es un número conocido $p\in [0,1]$.\\
 
-Denotamos $q:=1-p$. Describiremos un modelo probabilístico para los Bernoulli trials. Definimos $\Omega=\{0,1\}^n$ como el conjunto de palabras de longitud $n$ en el conjunto de símbolos $\{0,1\}$ Una palabra $\omega\in \Omega$ describe completamente el resultado de los $n$ lanzamientos. Si $n=3$ la palabra $\omega=(1,1,0)$ dice que la primera y segunda moneda salieron $1$ y la tercera cero. Definimos $\calF$ como todos los subconjuntos de $\Omega$.
+Denotamos $q:=1-p$. Describiremos un modelo probabilístico para los Bernoulli trials. Definimos $\Omega=\{0,1\}^n$ como el conjunto de palabras de longitud $n$ en el conjunto de símbolos $\{0,1\}$. Una palabra $\omega\in \Omega$ describe completamente el resultado de los $n$ lanzamientos. Si $n=3$ la palabra $\omega=(1,1,0)$ dice que la primera y segunda moneda salieron $1$ y la tercera cero. Definimos $\calF$ como todos los subconjuntos de $\Omega$.
 Para una palabra $\omega\in \Omega$ definimos
 \[\PP(\{\omega\})=p^{n_1(\omega)}q^{n_0(\omega)}\]
 donde $n_0(\omega)$ es el número de ceros en la palabra $\omega$ y $n_1(\omega)$ es el número de unos.
@@ -287,7 +287,7 @@ Teniendo una medida de probabilidad podemos calcular como se comporta cualquier 
 
 Esta sección es una tangente del tema central del curso que sirve como motivación para algunas de las ideas que desarrollaremos después. 
 
-La siguiente fórmula provee una aproximación de la densidad binomial $\mu_n(m):=\binom{n}{m}p^mq^{n-m}$ mediante una función muy especial, la llamada \emph{distribución normal o distribución Gaussiana} $\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$ que juega un rol central en probabilidad y  estadística. 
+La siguiente fórmula provee una aproximación de la densidad binomial $\mu_n(m):=\binom{n}{m}p^mq^{n-m}$ mediante una función muy especial, la llamada \emph{distribución normal o distribución Gaussiana} $\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$ que juega un rol central en probabilidad y estadística. 
 
 \begin{lemma}Para todo $p\in (0,1)$ y $m=0,\dots, n$, definiendo $x=\frac{m-np}{\sqrt{npq}}$ se tiene que
 \[\lim_{n\rightarrow \infty} \frac{\sqrt{npq}\mu_n(m)}{\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}}=1\]
@@ -309,7 +309,7 @@ provee buenas estimaciones cuando $n>>0$ y $p$ no es ni demasiado grande ni dema
 
 Queremos construir un modelo probabilista para la siguiente situación: \emph{Se selecciona un número real en el intervalo $[0,1]$ de manera uniforme (de tal forma que todo punto tenga la misma probabilidad)}.
 
-Definimos $\Omega=[0,1]$ definimos $\calF$ como la sigma-\'algebra m\'as pequeña que contiene a los intervalos abiertos $(a,b)\subseteq [0,1]$, esta sigma-álgebra se llama la sigma-álgebra de Borel. Definimos $\PP((a,b)):=b-a$ para cualquier intervalo y más generalmente definimos la probabilidad de cualquier $A\in \calF$ como su longitud (tambien llamada su medida de Lebesgue). Es un hecho (no tan fácil de demostrar y parte de un curso más preciso) que $(\Omega,\calF,\PP)$ es un espacio de probabilidad.
+Definimos $\Omega=[0,1]$ y definimos $\calF$ como la sigma-\'algebra m\'as pequeña que contiene a los intervalos abiertos $(a,b)\subseteq [0,1]$, esta sigma-álgebra se llama la sigma-álgebra de Borel. Definimos $\PP((a,b)):=b-a$ para cualquier intervalo y más generalmente definimos la probabilidad de cualquier $A\in \calF$ como su longitud (también llamada su medida de Lebesgue). Es un hecho (no tan fácil de demostrar y parte de un curso más preciso) que $(\Omega,\calF,\PP)$ es un espacio de probabilidad.
 
 \begin{remark} Bajo este modelo continuo de probabilidad $\PP(\{z\})=0$ para cualquier $z\in [0,1]$. Por lo anterior el comportamiento de la probabilidad debe estudiarse en intervalos. Por ejemplo $\PP([0,z])=z$ para cualquier $z\in [0,1]$ y $\PP([1/3,2/3])=1/3$. 
 \end{remark}
@@ -332,7 +332,7 @@ Típicamente la distribución se resume a través de la \emph{función de distri
 
 
 \begin{examplex} \emph{Lanzamos dos monedas justas $\{0,1\}$ y definimos la variable $X$ como el número de veces que cae $1$.}
-Como vimos en la sección anterior,el espacio de probabilidad natural es el modelo de Bernoulli con $p=q=1/2$ y $n=2$. Es decir $\Omega=\{00,01,10,11\}$, $\calF$ son todos los subconjuntos de $\Omega$ y $\PP$ es la distribución uniforme en $\Omega$ (que asigna $1/4$ a cada $\omega\in \Omega$). La función $X$ se puede tabular así:
+Como vimos en la sección anterior, el espacio de probabilidad natural es el modelo de Bernoulli con $p=q=1/2$ y $n=2$. Es decir $\Omega=\{00,01,10,11\}$, $\calF$ son todos los subconjuntos de $\Omega$ y $\PP$ es la distribución uniforme en $\Omega$ (que asigna $1/4$ a cada $\omega\in \Omega$). La función $X$ se puede tabular así:
 
 
 \begin{center}
@@ -357,8 +357,7 @@ De lo anterior vemos que la distribución de $X$ cumple: $X$ cae $0$ con prob $1
 
 Distinguimos variables aleatorias discretas y continuas. Luego de algunas definiciones preliminares nos ocuparemos del estudio de ejemplos concretos.
 
-\begin{definition} Sea $D\subseteq \RR$ un conjunto discreto.
-. Una funci\'on $f_X:D\rightarrow \RR$ es  la densidad de una variable aleatoria discreta $X$ en $D$ si cumple:
+\begin{definition} Sea $D\subseteq \RR$ un conjunto discreto. Una funci\'on $f_X:D\rightarrow \RR$ es la densidad de una variable aleatoria discreta $X$ en $D$ si cumple:
 \begin{enumerate}
 \item $\forall d\in D\left(f_X(d)\geq 0\right)$
 \item $\sum_{d\in D} f_X(d)=1$
@@ -371,7 +370,7 @@ El \emph{valor esperado} de la variable $X$ es el número
 
 
 Sea $[a,b]\subseteq \RR$ un intervalo (permitiendo $a=-\infty$ y $b=\infty$).
-\begin{definition} Una funci\'on $f_X:[a,b]\rightarrow \RR$ es la densidad de una variable aleatoria absolutamente continua $X$ en $D$ si cumple:
+\begin{definition} Una funci\'on $f_X:[a,b]\rightarrow \RR$ es la densidad de una variable aleatoria absolutamente continua $X$ en $[a,b]$ si cumple:
 \begin{enumerate}
 \item $\forall x\in [a,b]\left(f_X(x)\geq 0\right)$
 \item $\int_a^bf_X(x)dx = 1$
@@ -379,7 +378,7 @@ Sea $[a,b]\subseteq \RR$ un intervalo (permitiendo $a=-\infty$ y $b=\infty$).
 La \emph{función de distribución acumulada} de la variable absolutamente continua $X$ es la función
 \[F_X(\beta):=\int_a^{\beta} f_X(x)dx\] 
 El \emph{valor esperado} de la variable $X$ es el número
-\[\EE[X]:=\int_a^b x f_X(x)\]
+\[\EE[X]:=\int_a^b x f_X(x)\,dx\]
 \end{definition}
 
 Notar que tanto en el caso discreto como el continuo la función $F_X(\beta)=\PP\{X\leq \beta\}$.
@@ -398,7 +397,7 @@ En esta subsección ilustramos algunas de las distribuciones de probabilidad má
 \label{fig:binomial_pmf_example}
 \end{figure}
 
-\item {\it Distribución de Poisson.} La variable $X\sim \mathrm{Poisson}(\lambda)$ tiene distribución discreta en los enteros positivos $k$  con densidad $\PP\{X=k\}=\frac{\lambda^k e^{-\lambda}}{k!}$, media $\EE[X]=\lambda$ y varianza $\mathrm{Var}(X)=\lambda$. En la figura se superponen los casos $\lambda=10$ y $\lambda=20$, mostrando cómo $\lambda$ desplaza la distribución y, al mismo tiempo, aumenta su dispersión (en Poisson, media y varianza coinciden, ambas iguales a $\lambda$).
+\item {\it Distribución de Poisson.} La variable $X\sim \mathrm{Poisson}(\lambda)$ tiene distribución discreta en los enteros no negativos $k$ con densidad $\PP\{X=k\}=\frac{\lambda^k e^{-\lambda}}{k!}$, media $\EE[X]=\lambda$ y varianza $\mathrm{Var}(X)=\lambda$. En la figura se superponen los casos $\lambda=10$ y $\lambda=20$, mostrando cómo $\lambda$ desplaza la distribución y, al mismo tiempo, aumenta su dispersión (en Poisson, media y varianza coinciden, ambas iguales a $\lambda$).
 
 \begin{figure}[h]
 \centering
@@ -420,10 +419,10 @@ media $\EE[X]=\mu$ y varianza $\mathrm{Var}(X)=\sigma^2$. En la figura se compar
 \end{figure}
 \end{itemize}
 
-\newpage 
-\subsection{Distribuciones de probabilidad de variables aleatorias escalares}
+\newpage
+\subsection{Vectores aleatorios}
 
-\begin{definition} Un \emph{Vector aleatorio} $(X,Y)$ en $\RR^2$ en el espacio $(\Omega,\calF,\PP)$ es una función $(X,Y): \Omega\rightarrow \RR^2$ tal que para todos $(\beta_1,\beta_2)\in \RR^2$ se cumple  que 
+\begin{definition} Un \emph{vector aleatorio} $(X,Y)$ en $\RR^2$ en el espacio $(\Omega,\calF,\PP)$ es una función $(X,Y): \Omega\rightarrow \RR^2$ tal que para todos $(\beta_1,\beta_2)\in \RR^2$ se cumple que 
 \[\left\{\omega\in \Omega: X(\omega)\leq \beta_1\text{ y simultáneamente } Y(\omega)\leq \beta_2\right\}\in \calF.\]
 La \emph{densidad acumulada} de un vector aleatorio es la función
 \[F_{(X,Y)}(\beta_1,\beta_2):=\PP\left\{\omega\in \Omega: X(\omega)\leq \beta_1\text{ y  } Y(\omega)\leq \beta_2\right\}.\]
@@ -445,7 +444,7 @@ De manera semejante podemos calcular las marginales de la variable $Y$ integrand
 
 
 \begin{examplex}
-Una distribución conjunta no esta determinada por sus distribuciones marginales. En el ejemplo vemos dos distribuciones gaussianas con las mismas marginales pero distintas distribuciones conjuntas. En la figura~\ref{fig:bivariate_same_marginals} se ven dos gaussianas bivariadas con marginales idénticas ($X\sim N(0,1)$ y $Y\sim N(0,1)$, curvas grises en la parte superior y en la derecha de cada panel) pero con distribución conjunta distinta: Como veremos más adelante es posible distinguir las distribuciones conjuntas mediante sus \emph{coeficientes de correlación} $\rho=+0.8$ (izquierda) frente a $\rho=-0.8$ (derecha).
+Una distribución conjunta no está determinada por sus distribuciones marginales. En el ejemplo vemos dos distribuciones gaussianas con las mismas marginales pero distintas distribuciones conjuntas. En la figura~\ref{fig:bivariate_same_marginals} se ven dos gaussianas bivariadas con marginales idénticas ($X\sim N(0,1)$ y $Y\sim N(0,1)$, curvas grises en la parte superior y en la derecha de cada panel) pero con distribución conjunta distinta: Como veremos más adelante es posible distinguir las distribuciones conjuntas mediante sus \emph{coeficientes de correlación} $\rho=+0.8$ (izquierda) frente a $\rho=-0.8$ (derecha).
 \end{examplex}
 
 \begin{figure}[h]
@@ -455,12 +454,12 @@ Una distribución conjunta no esta determinada por sus distribuciones marginales
 \label{fig:bivariate_same_marginals}
 \end{figure}
 
-Bajo la hipótesis adicional de \emph{independencia entre las componentes} un vector aleatorio queda completamente determinado por sus merginales. Más precisamente
+Bajo la hipótesis adicional de \emph{independencia entre las componentes} un vector aleatorio queda completamente determinado por sus marginales. Más precisamente
 
 \begin{definition} Un vector aleatorio $(X,Y)$ tiene componentes independientes si para todo rectángulo $[a,b]\times [c,d]$ tenemos la igualdad
 \[\PP\left\{(X,Y)\in [a,b]\times [c,d]\right\} = \PP\left\{X\in [a,b]\right\}\PP\left\{Y\in [c,d]\right\}\]
 \end{definition}
-Como la condición de arriba depende de todos los rectángulos podría parecer que verificar la condición de independencia es dificil. El siguiente Lema asegura que esta es \emph{equivalente a una propiedad de factorización de la densidad conjunta como producto de densidades marginales} que es fácil de verificar.
+Como la condición de arriba depende de todos los rectángulos podría parecer que verificar la condición de independencia es difícil. El siguiente Lema asegura que esta es \emph{equivalente a una propiedad de factorización de la densidad conjunta como producto de densidades marginales} que es fácil de verificar.
 
 \begin{lemma} Las siguientes propiedades son equivalentes para un vector $(X,Y)$ aleatorio con densidad $f_{(X,Y)}(x,y)$ absolutamente continua:
 \begin{enumerate}
@@ -475,15 +474,27 @@ para todos $(x,y)\in \RR^2$
 \end{lemma}
 
 \subsection{Distribuciones conjuntas de vectores aleatorios}
-Esta sección reune algunos ejemplos de usos de densidades conjuntas.
+Esta sección reúne algunos ejemplos de usos de densidades conjuntas.
 
 \begin{examplex} Suponga que $X$ e $Y$ son variables aleatorias normales standard e INDEPENDIENTES. Calcule la densidad de $X^2+Y^2$.
+Sea $S:=X^2+Y^2$. Como $X$ e $Y$ son independientes, la densidad conjunta de $(X,Y)$ es
+\[f_{(X,Y)}(x,y)=\frac{1}{2\pi}e^{-(x^2+y^2)/2}.\]
+Para $s\geq 0$, usando coordenadas polares $x=r\cos\theta$, $y=r\sin\theta$ (jacobiano $r$):
+\[F_S(s)=\PP\{X^2+Y^2\leq s\}=\int_0^{2\pi}\int_0^{\sqrt{s}}\frac{1}{2\pi}e^{-r^2/2}\,r\,dr\,d\theta=1-e^{-s/2}.\]
+Diferenciando obtenemos la densidad
+\[f_S(s)=\frac{1}{2}e^{-s/2},\quad s>0\]
+(es $f_S(s)=0$ para $s<0$): $S$ tiene distribución exponencial de tasa $1/2$, equivalente a una $\chi^2$ con 2 grados de libertad.
 \end{examplex}
 
-\begin{examplex} Suponga que $X$ e $Y$ son variables aleatorias normales standard e INDEPENDIENTES. Cómo es la densidad conjunta de las coordenadas polares $(R,\theta)$ del punto $(X,y)$?
+\begin{examplex} Suponga que $X$ e $Y$ son variables aleatorias normales standard e INDEPENDIENTES. Cómo es la densidad conjunta de las coordenadas polares $(R,\theta)$ del punto $(X,Y)$?
+Consideremos la transformación $(x,y)=(r\cos\theta,r\sin\theta)$ con $r\geq 0$ y $\theta\in[0,2\pi)$, cuyo jacobiano es
+\[J=\left|\begin{array}{cc}\cos\theta&-r\sin\theta\\ \sin\theta&r\cos\theta\end{array}\right|=r.\]
+Por la fórmula de cambio de variables la densidad conjunta de $(R,\theta)$ es
+\[f_{(R,\theta)}(r,\theta)=f_{(X,Y)}(r\cos\theta,r\sin\theta)\,r=\frac{r}{2\pi}e^{-r^2/2}.\]
+Notar que $R$ y $\theta$ resultan independientes: la densidad se factoriza en $f_R(r)=re^{-r^2/2}$ (distribución de Rayleigh) y $f_\theta(\theta)=\frac{1}{2\pi}$ (uniforme en $[0,2\pi)$).
 \end{examplex}
 
-\begin{examplex} Suponga que $X$ e $Y$ son variables aleatorias normales standard e INDEPENDIENTES. Cómo es la densidad conjunta de l vector aleatorio $(Z,W)$ definido mediante el producto de matrices
+\begin{examplex} Suponga que $X$ e $Y$ son variables aleatorias normales standard e INDEPENDIENTES. Cómo es la densidad conjunta del vector aleatorio $(Z,W)$ definido mediante el producto de matrices
 \[
 \left(\begin{array}{c}
 Z \\
@@ -498,8 +509,106 @@ X \\
 Y \\
 \end{array}\right)
 \]
-donde $a,b,c,d$ son números reales dados.
+donde $a,b,c,d$ son números reales dados tales que la transformación lineal es invertible ($ad-bc\neq 0$).
+La transformación lineal $(X,Y)\mapsto(Z,W)$ es invertible; su inversa es
+\[x=\frac{dz-bw}{ad-bc},\qquad y=\frac{-cz+aw}{ad-bc}\]
+y su jacobiano es $|ad-bc|$. Por la fórmula de cambio de variables la densidad conjunta de $(Z,W)$ es
+\[f_{(Z,W)}(z,w)=\frac{1}{2\pi|ad-bc|}\exp\left(-\frac{(dz-bw)^2+(-cz+aw)^2}{2\,(ad-bc)^2}\right),\]
+es decir, $(Z,W)$ tiene una distribución gaussiana bivariable con medias nulas.
 \end{examplex}
+
+
+\section{Valor esperado, varianza, momentos y su función generadora}
+
+\begin{definition}
+Si $(X_1,\dots, X_n)$ es un vector aleatorio en $\RR^n$ con densidad absolutamente continua y $g:\RR^n\rightarrow \RR$ es una función escalar definimos el \emph{valor esperado} o \emph{valor promedio} de $g$ en $(X_1,\dots, X_n)$ mediante la fórmula
+\[\EE[g(X_1,\dots, X_n)]:=\int\int\dots\int_{\RR^n} g(x_1,\dots, x_n)f_{(X_1,\dots, X_n)}(x_1,\dots, x_n) dx_1 dx_2\dots dx_n\]
+\end{definition}
+
+En particular, si $X$ es una variable aleatoria en $1D$ lo anterior nos permite definir $\EE[X]$ y ${\rm Var}(X):=\EE[(X-\mu)^2]$ donde $\mu:=\EE[X]$. Más generalmente el $k$-ésimo momento de $X$ está dado por $\mu_k:=\EE[X^k]$. El vector de momentos es una manera de codificar el comportamiento de una distribución de probabilidad. 
+
+
+El siguiente Lema contiene las propiedades principales de valor esperado y varianza 
+
+\begin{lemma} Si $X,Y$ son variables aleatorias en $\RR$ y $a,b$ números reales entonces se cumplen las siguientes propiedades:
+\begin{enumerate}
+\item \emph{Linealidad de la esperanza} $\EE[aX+Y]=a\EE[X]+\EE[Y]$
+\item Si $X,Y$ son variables aleatorias INDEPENDIENTES entonces $\EE[XY]=\EE[X]\EE[Y]$.
+\item \emph{No-linealidad de la varianza} 
+\[{\rm Var}(X)=\EE[X^2]-(\EE[X])^2\]
+\item ${\rm Var}(aX+b)=a^2{\rm Var}(X)$
+\item Si $X,Y$ son variables aleatorias INDEPENDIENTES entonces 
+\[{\rm Var}(X+Y)={\rm Var}(X)+{\rm Var}(Y)\]
+\end{enumerate}
+\end{lemma}
+
+\begin{definition} Si $X$ es una variable aleatoria en $\RR$ su \emph{función generadora de momentos} está dada por
+\[m_X(t):=\EE[e^{tX}]\]
+\end{definition}
+
+Se llama función generadora de momentos pues tiene la propiedad de que mediante diferenciación nos permite determinar los momentos superiores de una variable aleatoria. Concretamente si derivamos $m_X(t)$ respecto a la variable $t$ $k$-veces y luego la evaluamos en $t=0$ obtenemos
+\[\frac{d^k}{dt^k}(m_X(t))\vert_{t=0}=\EE[X^k]\]
+
+
+\begin{lemma} La siguiente tabla contiene las funciones generadoras de momento de las distribuciones más comunes
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llll}
+\hline
+Distribución & Parámetros & Densidad $f_X$ & Función generadora de momentos $m_X(t)$ \\
+\hline
+Bernoulli & $p$ & $p^x(1-p)^{1-x},\; x\in\{0,1\}$ & $1-p+pe^t$ \\
+Binomial & $n,p$ & $\binom{n}{k}p^k(1-p)^{n-k},\; k=0,\dots,n$ & $(1-p+pe^t)^n$ \\
+Poisson & $\lambda$ & $e^{-\lambda}\frac{\lambda^k}{k!},\; k=0,1,2,\dots$ & $e^{\lambda(e^t-1)}$ \\
+Uniforme & $[a,b]$ & $\frac{1}{b-a}\,\mathbf{1}_{[a,b]}(x)$ & $\frac{e^{bt}-e^{at}}{t(b-a)}$ \\
+Gaussiana & $(\mu,\sigma^2)$ & $\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ & $e^{\mu t+\frac{\sigma^2 t^2}{2}}$ \\
+Exponencial & $\lambda$ & $\lambda e^{-\lambda x}\,\mathbf{1}_{x\geq 0}$ & $\frac{\lambda}{\lambda-t},\; t<\lambda$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{lemma}
+
+
+\subsection{Concentración de la medida}
+
+De la definición se sigue que la varianza de una variable aleatoria $X$ es idéntica a cero precisamente cuando $X$ es determinista (i.e. caso en el que coincide idénticamente con su propio valor esperado). En esta sección estudiamos un primer resultado de concentración que asegura que las variables aleatorias con poca varianza están cerca de su media.
+
+\begin{lemma} {\it Desigualdad de Markov} Sea $X$ una variable aleatoria positiva con $\EE[X]<\infty$ y sea $t>0$ un número real. Tenemos la desigualdad
+\[\PP\{X\geq t\}\leq \frac{\EE[X]}{t}\]
+\end{lemma}
+
+\begin{theorem}{\it Desigualdad de Chebyshev} Si $X$ es una variable aleatoria con ${\rm Var}(X)<\infty$ entonces para todo $a>0$ se tiene la desigualdad
+\[\PP\{|X-\mu|\geq a\}\leq \frac{{\rm Var}(X)}{a^2}\]
+\end{theorem}
+
+\begin{examplex} {\it Por qué medir es posible?} Sean $X_1,\dots, X_n$ una colección de variables aleatorias INDEPENDIENTES e idénticamente distribuidas. En particular tienen la misma media $\mu$ y varianza $\sigma^2$. El promedio es la variable aleatoria 
+\[S_n:=\frac{X_1+\dots+X_n}{n}.\] 
+De la linealidad del valor esperado concluimos
+\[\EE[S_n]=\mu\]
+y de la independencia sabemos que 
+\[{\rm Var}(S_n)=\frac{\sum_{j=1}^n {\rm Var}(X_j)}{n^2}=\frac{\sigma^2}{n}\]
+Lo importante es que cuando $n\rightarrow \infty$ la varianza ${\rm Var}(S_n)\rightarrow 0$ luego la variable se concentra alrededor de su media y una sola medición del promedio es, con alta probabilidad, una buena estimación de $\mu$. 
+Más precisamente, por la desigualdad de Chebyshev sabemos que
+\[\PP\{|S_n-\mu|\geq a\}\leq \frac{\sigma^2}{na^2}\]
+lo que nos da una idea cuantitativa de la concentración.
+\end{examplex}
+
+Para visualizar la concentración, la figura siguiente muestra la densidad del
+promedio $S_n=\frac{1}{n}(X_1+\dots+X_n)$ de $n$ variables normales estándar
+$X_j\sim N(0,1)$ para $n=1,5,10,50$. Como $S_n\sim N(0,1/n)$, a medida que
+$n$ crece la densidad se hace más alta y más angosta, concentrándose en
+torno a $0$ (su media).
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.85\textwidth]{concentration_average_normals.png}
+\caption{Densidad de la media muestral $S_n$ de $n$ normales estándar
+$X_j\sim N(0,1)$ para $n=1,5,10,50$. Como $S_n\sim N(0,1/n)$, al crecer $n$
+la distribución se concentra alrededor de su media $0$ (menor dispersión).}
+\end{figure}
+
 
 
 
