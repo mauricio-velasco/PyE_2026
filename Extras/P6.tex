@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\var}{{\rm Var}}
+\newcommand{\invq}{\mbox{\reflectbox{?}}}
+
+\begin{document}
+
+\begin{center}
+\begin{minipage}{0.48\textwidth}
+\textbf{Probabilidad y Estad\'istica}\\[2pt]
+Curso 2026
+\end{minipage}\hfill
+\begin{minipage}{0.48\textwidth}
+\raggedleft
+Universidad de la Rep\'ublica\\[2pt]
+Facultad de Ciencias
+\end{minipage}
+\end{center}
+
+\vspace{1.2em}
+\begin{center}
+\rule{\textwidth}{0.4pt}\\[0.7em]
+{\LARGE\bfseries Pr\'actico 6.}\\[0.4em]
+{\large\bfseries Intervalos de confianza y pruebas de h\'ipotesis}\\[0.7em]
+\rule{\textwidth}{0.4pt}
+\end{center}
+\vspace{1.6em}
+
+\begin{enumerate}
+
+    \item Una variable aleatoria tiene distribución $\Gamma(a,b)$ si su densidad est\'a dada por la f\'ormula
+    \[
+    f(x) = \frac{b^a}{\Gamma(a)}\, x^{a-1} e^{-bx}\,{\rm 1}_{\{x>0\}}.
+    \]
+    
+    \begin{enumerate}
+    \item Calcule la función generadora de momento de la distribución $\Gamma(a,b)$
+    \item Si $X,Y$ son variables aleatorias independientes con distribución $\Gamma(a,b)$ cuál es la distribución de la resta $X-Y$?
+
+\item Una variable aleatoria tiene distribución $\chi^2_{n}$ con $n$ grados de libertad si tiene la misma distribución que una suma de $n$ variables aleatorias normales standard elevadas al cuadrado.
+Usando esta definición calcule la función generadora de momentos de la distribución $\chi^2_{n}$. 
+\item  Qué relación hay entre las funciones generadoras de momento de las distribuciones $\chi^2$ y $\Gamma$?
+\item Deduzca de lo anterior una fórmula para la densidad de una variable aleatoria con distribución $\chi^2_{n}$.
+    \end{enumerate}
+
+
+
+
+\item Asuma que la altura $X$ de una población est\'a modelada por la distribución normal 
+$\mathcal{N}(\mu,10^2)$ donde $\mu$ es desconocido y sea $X_1,\dots, X_n$ una muestra 
+aleatoria independiente con la distribución de $X$.
+\begin{enumerate}
+    \item Verifique que $\overline{X_n}:=\frac{1}{n}\sum X_i$ tiene media $\mu$ y varianza $\frac{10^2}{n}$.
+    \item Verifique que $\overline{X_n}$ tiene distribución normal.
+    \item Verifique que $Z:=\frac{\overline{X_n}-\mu}{\sigma/\sqrt{n}}$ tiene distribución normal standard para todo valor de $\mu$
+    \item Encuentre un valor $z^*$ para el cual $\PP\{-z^*\leq Z\leq z^*\}=1-\alpha$. Para $\alpha=0.01,0.05,0.1$
+    \item Tomamos una muestra de 100 personas y observamos que la altura promedio es $1.65$. Para cada uno de los valores anteriores encuentre un intervalo de confianza para el parámetro $\mu$
+    \item Explique con precisión y en sus palabras qué significa que $\mu$ pertenezca al intervalo encontrado arriba con probabilidad $0.99$ (con qué distribución est\'a midiendo su probabilidad?)
+    \item Un observador propone la hipótesis de que $\mu=1.30$. 
+    Proponga una estrategia para intentar rechazar la validez de la hipótesis usando la altura promedio que encontr\'o en su muestra del ejemplo anterior. 
+\end{enumerate}
+
+\item Asuma que la altura $X$ de una población est\'a modelada por la distribución normal 
+$\mathcal{N}(\mu,\sigma^2)$ donde $\mu$ es desconocido y sea $X_1,\dots, X_n$ una muestra 
+aleatoria independiente con la distribución de $X$. A diferencia del ejercicio anterior ahora 
+la varianza de la población es un parámetro desconocido para nosotros.
+\begin{enumerate}
+
+\item Demuestre que $S^2:=\frac{1}{n-1} \sum_{i=1}^n \left(X_i-\overline{X_n}\right)^2$ es un estimador insesgado de $\sigma^2$
+\item Demuestre que $\frac{(n-1)S^2}{\sigma^2}$ tiene la misma distribución que una suma de $n-1$ cuadrados de variables aleatorias normales standard (esta es la distribución $\chi^2_{(n-1)}$)
+\item Demuestre que $S^2$ y $\overline{X_n}$ son variables aleatorias independientes.
+\item Demuestre que el estimador $T:=\frac{\overline{X_n}-\mu}{\sqrt{S^2/n}}$  (obtenido al reemplazar la varianza en el ejercicio anterior por su estimador) tiene distribución $t$ de Student con $n-1$ grados de libertad para todo valor del parámetro $\mu$.
+   \item Encuentre un valor $t^*$ para el cual $\PP\{-t^*\leq T\leq t^*\}=1-\alpha$. Para $\alpha=0.01,0.05,0.1$
+    \item Tomamos una muestra de 100 personas y observamos que la altura promedio es $1.65$ y que el estimador de varianza vale $102$. Para cada uno de los valores anteriores encuentre un intervalo de confianza para el parámetro $\mu$
+    \item Explique con precisión y en sus palabras qué significa que $\mu$ pertenezca al intervalo encontrado arriba con probabilidad $0.99$ (con qué distribución est\'a midiendo su probabilidad?)
+    \item Un observador propone la hipótesis de que $\mu=1.30$. 
+    Proponga una estrategia para intentar rechazar la validez de esta hipótesis usando los datos medidos en su muestra del ejemplo anterior. 
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+
+\item Sea $X_1,\dots,X_n$ una muestra i.i.d. con media $\mu=\EE[X_1]$ y función generadora de momentos $M(t)=\EE[e^{tX_1}]$, supuesta finita en un entorno de $0$. Sea $\overline{X_n}:=\frac{1}{n}\sum_{i=1}^n X_i$.
+\begin{enumerate}
+    \item Verifique que, usando la independencia,
+    \[
+    \EE\left[e^{t(\overline{X_n}-\mu)}\right] = \big(e^{-t\mu}M(t)\big)^n
+    \]
+    para todo $t$ real en dicho entorno.
+    \item Si $Y\ge 0$, verifique que $\PP\{Y\ge a\}\le \EE[Y]/a$ para todo $a>0$ (desigualdad de Markov). Aplíquela a $Y=e^{t(\overline{X_n}-\mu)}$ y deduzca que, para todo $t>0$,
+    \[
+    \PP\left\{\overline{X_n}-\mu \ge \varepsilon\right\} \le \exp\Big(-nt\varepsilon + n\big[\log M(t) - t\mu\big]\Big).
+    \]
+    \item Defina $\varphi(t):=\log M(t)-t\mu$. Mostre que la mejor cota de la forma anterior es
+    \[
+    \PP\left\{\overline{X_n}-\mu \ge \varepsilon\right\} \le \exp\Big(-n\sup_{t>0}\big[t\varepsilon-\varphi(t)\big]\Big).
+    \]
+    Suponiendo que $\varphi$ es diferenciable, verifique que el valor óptimo $t^*>0$ es (cuando existe) la solución de $\varphi'(t^*)=\varepsilon$, y obtenga la cota
+    \[
+    \PP\left\{\overline{X_n}-\mu \ge \varepsilon\right\} \le \exp\big(-n\,[\varphi'(t^*)t^* - \varphi(t^*)]\big).
+    \]
+    \item Si además $a\le X_i\le b$ casi seguro, y usando el lema de Hoeffding $\varphi(t)\le \frac{t^2(b-a)^2}{8}$ para todo $t$ real, deduzca la desigualdad clásica de Hoeffding
+    \[
+    \PP\left\{\overline{X_n}-\mu \ge \varepsilon\right\} \le \exp\left(-\frac{2n\varepsilon^2}{(b-a)^2}\right).
+    \]
+    \item (Concentración exponencial gaussiana) Suponga ahora que $X_i\stackrel{i.i.d.}{\sim}\mathcal{N}(\mu,\sigma^2)$:
+    \begin{enumerate}
+        \item Calcule $M(t)=\exp(\mu t+\sigma^2t^2/2)$ y, en consecuencia, verifique que
+        \[
+        \EE\left[e^{t(\overline{X_n}-\mu)}\right] = \exp\left(\frac{\sigma^2t^2}{2n}\right).
+        \]
+        \item Use la desigualdad de Markov para todo $t>0$ y optimice en $t$ para obtener (sugerencia: $t^*=\frac{n\varepsilon}{\sigma^2}$)
+        \[
+        \PP\left\{\overline{X_n}-\mu \ge \varepsilon\right\} \le \exp\left(-\frac{n\varepsilon^2}{2\sigma^2}\right).
+        \]
+        \item Repita el razonamiento para la cola inferior y concluya, usando la unión de sucesos, la concentración a dos lados
+        \[
+        \PP\left\{\left|\overline{X_n}-\mu\right|\ge\varepsilon\right\} \le 2\exp\left(-\frac{n\varepsilon^2}{2\sigma^2}\right).
+        \]
+    \end{enumerate}
+\end{enumerate}
+
