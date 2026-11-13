@@ -1,0 +1,284 @@
+\documentclass[12pt]{amsart}
+\pdfoutput=1
+\usepackage{latexsym, amsmath, amssymb, amsthm, bm}
+\usepackage{calrsfs}
+\usepackage{subfig}
+
+\usepackage[mathscr]{eucal}
+\usepackage{mathtools}
+\usepackage{paralist}
+\usepackage[alphabetic]{amsrefs}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{microtype}
+\usepackage{tikz}
+\renewcommand{\baselinestretch}{1.05}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue, citecolor=blue]%
+    {hyperref}
+\linespread{1.06}
+%%--LAYOUT--------------------------------------------------------------------
+\usepackage[paperwidth=8.5in, paperheight=11in, inner=2.5cm, outer=2.5cm,% 
+    top=2.5cm, bottom=2.5cm]{geometry}
+%%--OTHER ENVIRONMENTS--------------------------------------------------------
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}[lemma]{Teorema}
+\newtheorem{corollary}[lemma]{Corolario}
+\newtheorem{proposition}[lemma]{Proposición}
+\theoremstyle{definition}
+\newtheorem{definition}[lemma]{Definición}
+\newtheorem{remark}[lemma]{Observación}
+\newtheorem{examplex}[lemma]{Ejemplo}
+\newtheorem{procedure}[lemma]{Procedure}
+
+\newenvironment{exm}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\diamond$}\examplex}
+  {\popQED\endexamplex}
+\newtheorem{question}[lemma]{Question}
+\newtheorem{conjecture}[lemma]{Conjecture}
+\newtheorem{Construction}[lemma]{Construction}
+\newtheorem{algorithm}[lemma]{Algorithm}
+%\theoremstyle{remark}
+\newcommand{\define}[1]{{\bfseries\itshape #1}}
+%%--MATH----------------------------------------------------------------------
+\newcommand{\relphantom}[1]{\mathrel{\phantom{#1}}}
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+%\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\ideal}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\coloneq}{\ensuremath{\mathrel{\mathop :}=}}
+\newcommand{\transpose}{\ensuremath{\textsf{\upshape T}}} 
+%% Blackboard bolds symbols
+\renewcommand{\AA}{\ensuremath{\mathbb{A}}} 
+\newcommand{\CC}{\ensuremath{\mathbb{C}}} 
+\newcommand{\kk}{\ensuremath{\Bbbk}} 
+\newcommand{\NN}{\ensuremath{\mathbb{N}}}
+\newcommand{\PP}{\ensuremath{\mathbb{P}}} 
+\newcommand{\QQ}{\ensuremath{\mathbb{Q}}} 
+\newcommand{\RR}{\ensuremath{\mathbb{R}}} 
+\newcommand{\EE}{\ensuremath{\mathbb{E}}} 
+
+\renewcommand{\P}{\ensuremath{P}} 
+\newcommand{\Q}{\ensuremath{Q}} 
+
+%\renewcommand{\SS}{\ensuremath{\mathbb{S}}} 
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}} 
+%% Script symbols
+\newcommand{\sC}{\ensuremath{\mathcal{C}}}
+\newcommand{\sE}{\ensuremath{\mathcal{E}}}
+\newcommand{\sF}{\ensuremath{\mathcal{F}}}
+\newcommand{\calF}{\ensuremath{\mathcal{F}}}
+\newcommand{\calL}{\ensuremath{\mathcal{L}}}
+
+\newcommand{\sH}{\ensuremath{\mathcal{H}}}
+\newcommand{\sL}{\ensuremath{\mathcal{L}}}
+\newcommand{\sO}{\ensuremath{\mathcal{O}}}
+
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Osh}{{\mathcal O}}
+\newcommand{\Ish}{{\mathcal I}}
+\newcommand{\calI}{{\mathcal I}}
+
+%% Operators
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\coker}{Coker}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\Cox}{Cox}
+\DeclareMathOperator{\depth}{depth}
+\DeclareMathOperator{\gon}{gon}
+\DeclareMathOperator{\Grass}{Gr}
+\DeclareMathOperator{\green}{\textit{a}}
+\DeclareMathOperator{\HH}{H}
+\DeclareMathOperator{\HHH}{\mathbb{H}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\kept}{\lambda}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\len}{\ell}
+\DeclareMathOperator{\py}{py}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\pr}{p}
+\DeclareMathOperator{\qp}{qp}
+\DeclareMathOperator{\qr}{qr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\reg}{reg}
+\DeclareMathOperator{\Sos}{\Sigma}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\sw}{sw}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\topint}{int}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\tw}{tw}
+\DeclareMathOperator{\variety}{V}
+%% Personalized comments
+\newcommand\mv[1]{{\color{blue}(MV: #1)}}
+\newcommand\mve[1]{{\color{red}(MV: #1)}}
+\newcommand\jh[1]{{\color{red}(JH: #1)}}
+
+\title{Guía de estudio II (Probabilidad y Estadística)}
+
+\begin{document}
+
+\maketitle
+El objetivo de este documento es servir de guía para los estudiantes en su preparación para los parciales del curso.
+Los enunciados marcados con Lema o Teorema son fundamentales y hay que conocer sus demostraciones. 
+
+\section{Función generadora de momento}
+
+\begin{definition} Si $X$ es una variable aleatoria con valores reales definimos su función generadora de momentos mediante la fórmula
+    \[m_X(t)=\EE[e^{tX}]\]
+Decimos que la variable $X$ tiene una función generadora de momento si existe un número $\epsilon>0$ tal que la función $m_X(t)$ existe (i.e. la integral converge) para todo $t\in (-\epsilon,\epsilon)$.
+\end{definition}
+
+La función generadora de momentos es una de las maneras en las que podemos representar una variable aleatoria. 
+El siguiente Lema reúne algunas propiedades básicas de la función generadora de momentos (no es necesario conocer su demostración pues la demostración que vimos depende del Teorema de convergencia dominada y las ecuaciones de Cauchy-Riemann, ambos temas importantes pero por fuera de este curso).
+
+\begin{lemma} Si la función generadora de momentos $m_X(t)$ existe para $t\in (-\epsilon,\epsilon)$ entonces,
+    \begin{enumerate}
+        \item La función $m_X(t)$ es continua en $(-\epsilon,\epsilon)$.
+        \item La función $m_X(t)$ es diferenciable en $(-\epsilon,\epsilon)$.
+        \item La función $m_X(t)$ es analítica en $(-\epsilon,\epsilon)$ y en particular:
+        \begin{enumerate}
+            \item Para todo entero positivo $k$ la $k$-ésima derivada en cero $m_X^{(k)}(0) = \EE[X^k]$ 
+            \item Para todo $t\in (-\epsilon,\epsilon)$ se tiene que
+            \[m_X(t)=\sum_{k=0}^\infty \frac{\EE[X^k]}{k!}\,t^k \]
+        \end{enumerate}
+    \end{enumerate}
+\end{lemma}
+
+En particular, el Lema muestra cómo usar la función generadora de momentos para calcular los momentos de una variable aleatoria, y en qué sentido $m_X(t)$ determina la distribución de $X$.
+
+\begin{examplex} Si $X$ es una variable aleatoria con distribución gaussiana, media $\mu$ y varianza $\sigma^2$, entonces
+\[
+m_X(t)=e^{\mu t+\frac{1}{2}\sigma^2 t^2}\qquad\text{para todo }t\in\RR.
+\]
+En efecto, como la densidad de $X$ es
+\[
+f(x)=\frac{1}{\sigma\sqrt{2\pi}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right),
+\]
+se tiene
+\[
+m_X(t)=\int_{-\infty}^{\infty}e^{tx}f(x)\,dx
+   =\frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{\infty}\exp\!\left(tx-\frac{(x-\mu)^2}{2\sigma^2}\right)\,dx.
+\]
+Completando el cuadrado en el exponente,
+\[
+tx-\frac{(x-\mu)^2}{2\sigma^2}
+   =-\frac{\left(x-(\mu+\sigma^2t)\right)^2}{2\sigma^2}+\mu t+\frac{1}{2}\sigma^2t^2,
+\]
+de modo que
+\[
+m_X(t)=e^{\mu t+\frac{1}{2}\sigma^2t^2}\int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}
+   \exp\!\left(-\frac{\left(x-(\mu+\sigma^2t)\right)^2}{2\sigma^2}\right)\,dx.
+\]
+Con el cambio de variables $y=\dfrac{x-(\mu+\sigma^2t)}{\sigma}$ (de modo que $dx=\sigma\,dy$), la integral se convierte en
+\[
+\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-y^2/2}\,dy=1,
+\]
+En consecuencia $m_X(t)=e^{\mu t+\frac{1}{2}\sigma^2t^2}\qquad\text{para todo }t\in\RR$.
+De la expansión de Taylor de $m_X(t)$ alrededor de $t=0$ obtenemos simultáneamente todos los momentos de $X$. Para simplificar, asumamos que $\mu=0$; entonces $m_X(t)=e^{\frac{1}{2}\sigma^2 t^2}$ y su expansión de Taylor en $t=0$ es
+\[
+m_X(t)=\sum_{k=0}^{\infty}\frac{\left(\frac{1}{2}\sigma^2 t^2\right)^k}{k!}
+   =\sum_{k=0}^{\infty}\frac{(\sigma^2/2)^k}{k!}\,t^{2k}.
+\]
+Como en esta expansión solo aparecen potencias pares de $t$, el coeficiente de $t^n$ es
+\[
+\begin{cases}
+\dfrac{(\sigma^2/2)^{n/2}}{(n/2)!} & \text{si }n\text{ es par},\\[6pt]
+0 & \text{si }n\text{ es impar}.
+\end{cases}
+\]
+Pero por el Lema anterior el coeficiente de $t^n$ en la expansión de Taylor de $m_X(t)$ es $\dfrac{\EE[X^n]}{n!}$; igualando ambos coeficientes obtenemos la fórmula para los momentos de una gaussiana centrada:
+\[
+\EE[X^n]=\begin{cases}
+\dfrac{n!}{(n/2)!}\left(\dfrac{\sigma^2}{2}\right)^{n/2}=(n-1)!!\,\sigma^n & \text{si }n\text{ es par},\\[8pt]
+0 & \text{si }n\text{ es impar},
+\end{cases}
+\]
+donde $(2k-1)!!=1\cdot 3\cdot 5\cdots(2k-1)$ denota el doble factorial. En particular,
+\[
+\EE[X]=0,\qquad \EE[X^2]=\sigma^2,\qquad \EE[X^3]=0,\qquad \EE[X^4]=3\sigma^4,\qquad \EE[X^6]=15\sigma^6.
+\]
+\end{examplex}    
+
+\begin{examplex} 
+    \label{ex: Gauss}
+    Si $X$ es una variable aleatoria con distribución uniforme en el intervalo $[a,b]$, $a<b$, entonces
+\[
+m_X(t)=\begin{cases}
+\dfrac{e^{tb}-e^{ta}}{t(b-a)} & \text{si }t\neq 0,\\[6pt]
+1 & \text{si }t=0.
+\end{cases}
+\]
+En efecto, la densidad de $X$ es $f(x)=\dfrac{1}{b-a}$ para $a\le x\le b$ (y $0$ en otro caso), por lo que
+\[
+m_X(t)=\int_{-\infty}^{\infty}e^{tx}f(x)\,dx
+   =\frac{1}{b-a}\int_{a}^{b}e^{tx}\,dx
+   =\frac{1}{b-a}\cdot\frac{e^{tb}-e^{ta}}{t}
+   =\frac{e^{tb}-e^{ta}}{t(b-a)}
+\]
+para $t\neq 0$ (y $m_X(0)=1$, que es el límite cuando $t\to 0$).
+
+De la expansión de Taylor de $m_X(t)$ alrededor de $t=0$ obtenemos todos los momentos de $X$. Al expandir el numerador,
+\[
+e^{tb}-e^{ta}=\sum_{k=0}^{\infty}\frac{t^k}{k!}\left(b^k-a^k\right)
+   =t\sum_{n=0}^{\infty}\frac{t^n}{(n+1)!}\left(b^{n+1}-a^{n+1}\right),
+\]
+de modo que
+\[
+m_X(t)=\frac{1}{b-a}\sum_{n=0}^{\infty}\frac{b^{n+1}-a^{n+1}}{(n+1)!}\,t^n.
+\]
+Como por el Lema anterior el coeficiente de $t^n$ en la expansión de Taylor es $\dfrac{\EE[X^n]}{n!}$, igualando ambos coeficientes obtenemos la fórmula para los momentos de la uniforme:
+\[
+\EE[X^n]=\frac{n!}{(n+1)!}\cdot\frac{b^{n+1}-a^{n+1}}{b-a}
+   =\frac{b^{n+1}-a^{n+1}}{(n+1)(b-a)}.
+\]
+En particular,
+\[
+\EE[X]=\frac{a+b}{2},\qquad
+\EE[X^2]=\frac{a^2+ab+b^2}{3},\qquad
+\EE[X^3]=\frac{a^3+a^2b+ab^2+b^3}{4}.
+\]
+\end{examplex}
+
+\begin{theorem} {\it del Límite Central} Suponga que $X_1,\dots, X_n$ son variables aleatorias
+independientes e idénticamente distribuidas, con media $\mu$ y varianza $\sigma^2$, y que
+$m_{X_j}(t)$ existe en algún intervalo alrededor de cero. Si $\overline{X_n}:=\frac{1}{n}\sum_{j=1}^n X_j$,
+entonces para todo $\beta\in \RR$
+\[\lim_{n\rightarrow \infty}\PP\left\{ \frac{\overline{X_n}-\mu}{\sigma/\sqrt{n}}\leq \beta\right\}=\Phi(\beta),
+\]
+donde $\Phi(z)$ es la función de distribución acumulada de la normal estándar.
+\end{theorem}
+\begin{proof} Sin pérdida de generalidad asumamos que las $X_i$ tienen media $0$ (restando $\mu$ a cada una
+si es necesario). Como las $X_i$ son independientes, el valor esperado de un producto es el producto de los
+valores esperados, y
+\[\EE\left[e^{\frac{t\sqrt{n}}{\sigma}\,\overline{X_n}}\right]
+ =\EE\left[e^{\frac{t}{\sigma\sqrt{n}}\sum_{j=1}^n X_j}\right]
+ =\prod_{j=1}^n m_{X_j}\left(\frac{t}{\sigma\sqrt{n}}\right)
+ =\left(m_{X_1}\left(\frac{t}{\sigma\sqrt{n}}\right)\right)^{n}.
+\]
+Como $m_{X_1}$ es analítica en cero y $\EE[X_1]=0$ (no hay término lineal), su expansión de Taylor en el
+origen da
+\[
+m_{X_1}\left(\frac{t}{\sigma\sqrt{n}}\right)=1+\frac{t^2}{2n}+O\!\left(\frac{1}{n^{3/2}}\right),
+\]
+de donde
+\[
+\left(m_{X_1}\left(\frac{t}{\sigma\sqrt{n}}\right)\right)^n
+=\exp\!\left(n\log\left(1+\frac{t^2}{2n}+O\!\left(\frac{1}{n^{3/2}}\right)\right)\right).
+\]
+Puesto que $n\log\left(1+\frac{t^2}{2n}+O\!\left(\frac{1}{n^{3/2}}\right)\right)\to \frac{t^2}{2}$ cuando
+$n\to\infty$, se sigue que
+\[
+\lim_{n\to\infty}\left(m_{X_1}\left(\frac{t}{\sigma\sqrt{n}}\right)\right)^n = e^{t^2/2},
+\]
+que, por el ejemplo~\ref{ex: Gauss}, es la función generadora de momentos de la normal estándar.
+\end{proof}
+
+
+
+\end{document}
+
