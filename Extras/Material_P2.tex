@@ -126,11 +126,11 @@
 El objetivo de este documento es servir de guía para los estudiantes en su preparación para los parciales del curso.
 Los enunciados marcados con Lema o Teorema son fundamentales y hay que conocer sus demostraciones. 
 
-\section{Función generadora de momento}
+\section{Función generadora de momentos}
 
 \begin{definition} Si $X$ es una variable aleatoria con valores reales definimos su función generadora de momentos mediante la fórmula
     \[m_X(t)=\EE[e^{tX}]\]
-Decimos que la variable $X$ tiene una función generadora de momento si existe un número $\epsilon>0$ tal que la función $m_X(t)$ existe (i.e. la integral converge) para todo $t\in (-\epsilon,\epsilon)$.
+Decimos que la variable $X$ tiene una función generadora de momentos si existe un número $\epsilon>0$ tal que la función $m_X(t)$ existe (i.e. la integral converge) para todo $t\in (-\epsilon,\epsilon)$.
 \end{definition}
 
 La función generadora de momentos es una de las maneras en las que podemos representar una variable aleatoria. 
@@ -142,16 +142,28 @@ El siguiente Lema reúne algunas propiedades básicas de la función generadora 
         \item La función $m_X(t)$ es diferenciable en $(-\epsilon,\epsilon)$.
         \item La función $m_X(t)$ es analítica en $(-\epsilon,\epsilon)$ y en particular:
         \begin{enumerate}
-            \item Para todo entero positivo $k$ la $k$-ésima derivada en cero $m_X^{(k)}(0) = \EE[X^k]$ 
+            \item Para todo entero positivo $k$, la $k$ésima derivada en cero $m_X^{(k)}(0) = \EE[X^k]$ 
             \item Para todo $t\in (-\epsilon,\epsilon)$ se tiene que
             \[m_X(t)=\sum_{k=0}^\infty \frac{\EE[X^k]}{k!}\,t^k \]
         \end{enumerate}
     \end{enumerate}
 \end{lemma}
 
-En particular, el Lema muestra cómo usar la función generadora de momentos para calcular los momentos de una variable aleatoria, y en qué sentido $m_X(t)$ determina la distribución de $X$.
+En particular, el Lema muestra cómo usar la función generadora de momentos para calcular los momentos de una variable aleatoria.
 
-\begin{examplex} Si $X$ es una variable aleatoria con distribución gaussiana, media $\mu$ y varianza $\sigma^2$, entonces
+Adicionalmente el siguiente Lema (del que no es necesario conocer la demostración pero sí el enuncciado) aclara en qué sentido la función generadora de momentos $m_X(t)$ captura la distribución de $X$.
+
+\begin{lemma} Las siguientes afirmaciones son verdaderas:
+    \begin{enumerate}
+        \item Si $X,Y$ son variables aleatorias cuyas funciones generadoras de momento coinciden en algún intervalo alrededor de $t=0$ (i.e. si $m_X(t)=m_Y(t)$ para todo $t\in (-\epsilon,\epsilon)$ para algún $\epsilon>0$) entonces las funciones de distribución acumulada de $X$ y de $Y$ coinciden.
+        \item Sean $(X_n)_{n\in \mathbb{N}}$ y $Z$ variables aleatorias cuyas funciones generadoras de momento existen en algún intervalo $(-\epsilon,\epsilon)$. Si $\lim_{n\rightarrow \infty} m_{X_n}(t) = m_Z(t)$ para todo $t$ en algún intervalo alrededor del orgien entonces para todo $\beta\in\RR$ en la que la función de distribución acumulada de $Z$ sea continua se tiene que 
+        \[\lim_{n\rightarrow \infty}\PP\left\{X_n\leq \beta\right\} = \PP\{Z\leq \beta\}\] 
+    \end{enumerate}
+    
+\end{lemma}
+
+
+\begin{examplex} \label{ex: Gauss} Si $X$ es una variable aleatoria con distribución gaussiana, media $\mu$ y varianza $\sigma^2$, entonces
 \[
 m_X(t)=e^{\mu t+\frac{1}{2}\sigma^2 t^2}\qquad\text{para todo }t\in\RR.
 \]
@@ -205,7 +217,6 @@ donde $(2k-1)!!=1\cdot 3\cdot 5\cdots(2k-1)$ denota el doble factorial. En parti
 \end{examplex}    
 
 \begin{examplex} 
-    \label{ex: Gauss}
     Si $X$ es una variable aleatoria con distribución uniforme en el intervalo $[a,b]$, $a<b$, entonces
 \[
 m_X(t)=\begin{cases}
@@ -244,16 +255,21 @@ En particular,
 \]
 \end{examplex}
 
-\begin{theorem} {\it del Límite Central} Suponga que $X_1,\dots, X_n$ son variables aleatorias
+\subsection{Aplicaciones de la función generadora de momentos}
+
+La primera aplicación es uno de los teoremas más útiles de la probabilidad. Explica la ubicuidad de la distribución normal pues captura cómo son las fluctuaciones de la media muestral $\overline{X_n}$ alrededor de la media. La distribución Gaussiana es una descripción universal de las fluctuaciones que resultan de agregar muchas contribuciones aleatorias \emph{de fuentes independientes}.
+
+\begin{theorem} {\it Teorema del Límite Central} Suponga que $X_1,\dots, X_n$ son variables aleatorias
 independientes e idénticamente distribuidas, con media $\mu$ y varianza $\sigma^2$, y que
 $m_{X_j}(t)$ existe en algún intervalo alrededor de cero. Si $\overline{X_n}:=\frac{1}{n}\sum_{j=1}^n X_j$,
-entonces para todo $\beta\in \RR$
+entonces 
+\[\frac{\overline{X_n}-\EE[\overline{X_n}]}{\sqrt{{\rm Var}(\overline{X_n})}} = \frac{\overline{X_n}-\mu}{\frac{\sigma}{\sqrt{n}}}\]
+y para todo $\beta\in \RR$
 \[\lim_{n\rightarrow \infty}\PP\left\{ \frac{\overline{X_n}-\mu}{\sigma/\sqrt{n}}\leq \beta\right\}=\Phi(\beta),
 \]
-donde $\Phi(z)$ es la función de distribución acumulada de la normal estándar.
+donde $\Phi(z)$ es la función de distribución acumulada de la normal estándar $\mathcal{N}(0,1)$.
 \end{theorem}
-\begin{proof} Sin pérdida de generalidad asumamos que las $X_i$ tienen media $0$ (restando $\mu$ a cada una
-si es necesario). Como las $X_i$ son independientes, el valor esperado de un producto es el producto de los
+\begin{proof} Sin pérdida de generalidad asumamos que las $X_i$ tienen media $0$ (restando $\mu$ a cada una y redefiniéndolas, si es necesario). Como las $X_i$ son independientes, el valor esperado de un producto es el producto de los
 valores esperados, y
 \[\EE\left[e^{\frac{t\sqrt{n}}{\sigma}\,\overline{X_n}}\right]
  =\EE\left[e^{\frac{t}{\sigma\sqrt{n}}\sum_{j=1}^n X_j}\right]
@@ -277,6 +293,44 @@ $n\to\infty$, se sigue que
 \]
 que, por el ejemplo~\ref{ex: Gauss}, es la función generadora de momentos de la normal estándar.
 \end{proof}
+
+\section{Estadística paramétrica}
+
+El problema fundamental de la estadística es entender el comportamiento de una variable de interés (típicamente numérica o categórica)  en una población.
+La hipótesis fundamental de la \emph{estadística paramétrica} es que esta variable tiene un comportamiento aleatorio y que tenemos una idea aproximada de su distribución en la forma de un \emph{modelo paramétrico} que depende de un vector de parámetros (numéricos) $\theta$ que representa adecuadamente la distribución de la cantidad de interés cuando $\theta=\theta_0$. 
+
+Nuestro objetivo es intentar estimar el valor verdadero $\theta_0$ de estos parámetros a partir del análisis de la cantidad de interés en una muestra de tamaño $n$ extraída de la población. Por el carácter aleatorio de la muestra y de la cantidad de interés, nuestra estimación será necesariamente aleatoria. Nuestro propósito será entonces garantizar que, con alta probabilidad, nuestras estimaciones estén cerca (en un sentido a definir) de los valores verdaderos de los parámetros. Algunos ejemplos aclararán este punto
+
+\begin{examplex}
+    Queremos entender la altura $Z$ de las personas en una población. Este problema permite muchos modelos paramétricos posibles. La selección del modelo paramétrico es nuestra \emph{hipótesis fundamental} y la que requiere más escrutinio (postular un modelo es más arte que ciencia y típicamente parte de observar los datos disponibles con suficiente atención). Para ilustrar las posibilidades podríamos considerar los siguientes modelos sencillos:
+    \begin{enumerate}
+        \item La altura tiene distribución normal con media desconocida $\mu$ y varianza conocida $\sigma^2=10^2$ en centímetros (recuerden que, para la distribución normal con varianza $\sigma^2$ el intervalo de $\mu \pm 3\sigma$ debe contener más del $99\%$ de los datos, lo cual en el caso de la altura se traduce a un rango de $\pm 30$ cm con la selección de varianza de arriba).
+        \item La altura tiene distribución normal con media $\mu$ y varianza $\sigma^2$, ambas desconocidas, es decir $\theta=(\mu,\sigma^2)$.
+        \item La altura tiene una distribución descrita con una mezcla de dos distribuciones normales equiprobables con parámetros $(\mu_1,\sigma_1^2)$ y $(\mu_2,\sigma_2^2)$ que representan las alturas de mujeres y hombres en la población. En ese caso $\theta=\left(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2\right)$.        
+    \end{enumerate}
+\end{examplex}
+
+Disponemos de una muestra de tamaño $n$ de la cantidad de interés (las alturas de $n=100$ personas en la población, por ejemplo). Asumimos que la muestra es una realización de variables aleatorias $X_1,\dots, X_n$ que son \emph{independientes} y que tienen la distribución verdadera de la altura cuando $\theta=\theta_0$.
+
+\begin{definition} Un estimador insesgado de un parámetro $\beta$ es una función $T(X_1,\dots, X_n)$ de la muestra que cumple 
+    \[\EE[T(X_1,\dots, X_n)]= \beta\]    
+\end{definition}
+
+El siguiente Teorema es muy importante pues provee algunos ejemplos básicos de estimadores insesgados. La calidad de un estimador insesgado depende de su distribución y en particular de qué tan concentrada se encuentre alrededor de su media, así que es útil conocer las distribuciones de estimadores como se hace en la parte $(3)$.
+
+\begin{theorem} Sean $X_1,\dots, X_n$ variables aleatorias independientes con media $\mu$ y varianza $\sigma^2$. Entonces las siguientes propiedades se cumplen:
+\begin{enumerate}
+    \item $\overline{X_n}$ es un estimador insesgado para $\mu$.
+    \item $S^2:=\frac{1}{n-1}\sum_{j=1}^n \left(X_j-\overline{X_n}\right)^{2}$ es un estimador insesgado para $\sigma^2$. 
+    \item Si todas las $X_j$ son variables aleatorias con distribución normal $\mathcal{N}(\mu,\sigma^2)$ entonces:
+    \begin{enumerate}
+        \item $\overline{X_n}$ tiene distribución normal $\mathcal{N}(\mu,\frac{\sigma^2}{n})$
+        \item $\frac{(n-1)S^2}{\sigma^2}$ tiene distribución $\chi^2$ con $n-1$ grados de libertad
+        \item El estadístico $W:=\frac{\overline{X_n}-\mu}{S/\sqrt{n}}$ tiene distribución t de Student con $n-1$ grados de libertad.
+    \end{enumerate} 
+\end{enumerate}
+\end{theorem}
+
 
 
 
