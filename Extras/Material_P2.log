@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.9.28)  14 NOV 2026 05:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.9.28)  14 NOV 2026 16:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -793,27 +793,37 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 131.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 131.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5] (./Material_P2.aux)
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5]
+Overfull \hbox (5.97203pt too wide) in paragraph at lines 352--353
+ \T1/ptm/m/n/12 (-20) 2.1.\T1/ptm/b/n/12 (-20) Intervalos de con-fi-anza y prue-bas de hipóte-sis.[][] \T1/ptm/m/n/12 (-20) Nue-stro es-ti-mador $\OML/ztmcm/m/it/12 T\OT1/ztmcm/m/n/12 (\OML/ztmcm/m/it/12 X[]; [] ; X[]\OT1/ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) del parámetro
+ []
+
+
+Overfull \hbox (11.27057pt too wide) in paragraph at lines 354--355
+[][]\T1/ptm/b/n/12 (-20) Definición 2.4. []\T1/ptm/m/n/12 (-20) Dado un número $\OML/ztmcm/m/it/12  \OMS/ztmcm/m/n/12 2 \OT1/ztmcm/m/n/12 (0\OML/ztmcm/m/it/12 ; \OT1/ztmcm/m/n/12 1)$\T1/ptm/m/n/12 (-20) , dec-i-mos que dos es-ti-madores $\OML/ztmcm/m/it/12 L\OT1/ztmcm/m/n/12 (\OML/ztmcm/m/it/12 X[]; [] ; X[]\OT1/ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) y $\OML/ztmcm/m/it/12 U\OT1/ztmcm/m/n/12 (\OML/ztmcm/m/it/12 X[]; [] ; X[]\OT1/ztmcm/m/n/12 )$
+ []
+
+[6] (./Material_P2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `Material_P2.out' has not changed.
-(rerunfilecheck)             Checksum: 0AE069D01C4FFD7BE1A8CC92A6C480C4;759.
+(rerunfilecheck)             Checksum: 64704B6A33384791BCDB1F009236AE2E;1095.
  ) 
 Here is how much of TeX's memory you used:
- 27036 strings out of 474222
- 483673 string characters out of 5748733
+ 27045 strings out of 474222
+ 483756 string characters out of 5748733
  1938975 words of memory out of 5000000
- 48453 multiletter control sequences out of 15000+600000
- 620985 words of font info for 248 fonts, out of 8000000 for 9000
+ 48454 multiletter control sequences out of 15000+600000
+ 621112 words of font info for 250 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 102i,9n,107p,1060b,708s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,9n,107p,1060b,760s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Material_P2.pdf (5 pages, 133866 bytes).
+Output written on Material_P2.pdf (6 pages, 139927 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 37925 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 153 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 37933 words of extra memory for PDF output out of 42996 (max. 10000000)
 

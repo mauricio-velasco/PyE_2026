@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1794644434.63017 "/home/mvelasco/Desktop/ExtraDropbox/PyE_2026/Extras/Material_P2.tex" "Material_P2.pdf" "Material_P2" 1794644435.43499 0
+["pdflatex"] 1794683661.43776 "/home/mvelasco/Desktop/ExtraDropbox/PyE_2026/Extras/Material_P2.tex" "Material_P2.pdf" "Material_P2" 1794683662.18229 0
   "/etc/texmf/web2c/texmf.cnf" 1754851828.79842 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/mvelasco/Desktop/ExtraDropbox/PyE_2026/Extras/Material_P2.tex" 1794644434.44303 17745 b1de149ad3b1a4581a6785a5982fd716 ""
+  "/home/mvelasco/Desktop/ExtraDropbox/PyE_2026/Extras/Material_P2.tex" 1794683661.26957 20462 da5327d1499999bd4b0b29fd027eaaf3 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -224,9 +224,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1759103839.43235 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1759103937 8212801 80aff99ca3e7be643562140ffe542663 ""
-  "Material_P2.aux" 1794644435.35205 852 e75ed99a52a7d6441ff2e041c9798d85 "pdflatex"
-  "Material_P2.out" 1794644435.35205 759 0ae069d01c4ffd7be1a8cc92a6c480c4 "pdflatex"
-  "Material_P2.tex" 1794644434.44303 17745 b1de149ad3b1a4581a6785a5982fd716 ""
+  "Material_P2.aux" 1794683662.10957 1013 0a84af01e79db4ff1a90a1497d372a48 "pdflatex"
+  "Material_P2.out" 1794683662.11057 1095 64704b6a33384791bcdb1f009236ae2e "pdflatex"
+  "Material_P2.tex" 1794683661.26957 20462 da5327d1499999bd4b0b29fd027eaaf3 ""
   (generated)
   "Material_P2.aux"
   "Material_P2.log"

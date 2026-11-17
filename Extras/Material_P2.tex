@@ -296,24 +296,40 @@ que, por el ejemplo~\ref{ex: Gauss}, es la función generadora de momentos de la
 
 \section{Estadística paramétrica}
 
-El problema fundamental de la estadística es entender el comportamiento de una variable de interés (típicamente numérica o categórica)  en una población.
-La hipótesis fundamental de la \emph{estadística paramétrica} es que esta variable tiene un comportamiento aleatorio y que tenemos una idea aproximada de su distribución en la forma de un \emph{modelo paramétrico} que depende de un vector de parámetros (numéricos) $\theta$ que representa adecuadamente la distribución de la cantidad de interés cuando $\theta=\theta_0$. 
+El objetivo de la estadística es entender el comportamiento de una variable de interés (típicamente numérica o categórica) en una población.
+La hipótesis fundamental de la \emph{estadística paramétrica} es que esta cantidad es aleatoria y tiene una \emph{distribución poblacional} fija. 
+Asumimos:
+\begin{enumerate}
+    \item Que conocemos una familia de distribuciones de probabilidad (llamada \emph{modelo paramétrico}) que depende de un \emph{vector de parámetros $\theta$} cuando $\theta$ recorre un conjunto de parámetros permitidos $\Theta$. 
+\item Que la distribución poblacional se obtiene cuando los parámetros toman un valor específico  $\theta=\theta^*$ llamado el \emph{valor verdadero}
+\end{enumerate}
 
-Nuestro objetivo es intentar estimar el valor verdadero $\theta_0$ de estos parámetros a partir del análisis de la cantidad de interés en una muestra de tamaño $n$ extraída de la población. Por el carácter aleatorio de la muestra y de la cantidad de interés, nuestra estimación será necesariamente aleatoria. Nuestro propósito será entonces garantizar que, con alta probabilidad, nuestras estimaciones estén cerca (en un sentido a definir) de los valores verdaderos de los parámetros. Algunos ejemplos aclararán este punto
+Nuestro objetivo es intentar estimar el valor verdadero de $\theta^*$ a partir del análisis de la cantidad en una muestra de tamaño $n$ extraída de la población. Por el carácter aleatorio de la muestra y de la cantidad de interés, nuestra estimación será necesariamente aleatoria. Nuestro propósito será entonces garantizar que, con alta probabilidad, nuestras estimaciones estén cerca (en un sentido a definir) del valor verdadero $\theta^*$ de los parámetros. Algunos ejemplos aclararán el punto de vista paramétrico,
 
 \begin{examplex}
     Queremos entender la altura $Z$ de las personas en una población. Este problema permite muchos modelos paramétricos posibles. La selección del modelo paramétrico es nuestra \emph{hipótesis fundamental} y la que requiere más escrutinio (postular un modelo es más arte que ciencia y típicamente parte de observar los datos disponibles con suficiente atención). Para ilustrar las posibilidades podríamos considerar los siguientes modelos sencillos:
     \begin{enumerate}
-        \item La altura tiene distribución normal con media desconocida $\mu$ y varianza conocida $\sigma^2=10^2$ en centímetros (recuerden que, para la distribución normal con varianza $\sigma^2$ el intervalo de $\mu \pm 3\sigma$ debe contener más del $99\%$ de los datos, lo cual en el caso de la altura se traduce a un rango de $\pm 30$ cm con la selección de varianza de arriba).
+        \item La altura tiene distribución normal con media desconocida $\mu$ y varianza conocida $\sigma^2=10^2$ en centímetros (recuerden que, para la distribución normal con varianza $\sigma^2$ el intervalo de $\mu \pm 3\sigma$ debe contener más del $99\%$ de los datos, lo cual en el caso de la altura se traduce a un rango de $\pm 30$ cm con la selección de varianza de arriba). En este caso $\theta=\mu$ y la familia paramétrica sería 
+        \[f_{\theta}(x)=\frac{1}{\sqrt{2\pi}} e^{-\frac{(x-\theta)^2}{2\cdot 10^2}}\]
+        La \emph{distribución poblacional} sería la normal de arriba para algún valor $\theta^*=\mu$ fijo pero desconocido para nosotros.
+
         \item La altura tiene distribución normal con media $\mu$ y varianza $\sigma^2$, ambas desconocidas, es decir $\theta=(\mu,\sigma^2)$.
-        \item La altura tiene una distribución descrita con una mezcla de dos distribuciones normales equiprobables con parámetros $(\mu_1,\sigma_1^2)$ y $(\mu_2,\sigma_2^2)$ que representan las alturas de mujeres y hombres en la población. En ese caso $\theta=\left(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2\right)$.        
+        La familia paramétrica sería:
+        \[f_{\theta}(x)=\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}},\qquad \theta=(\mu,\sigma^2)\in\RR\times(0,\infty)\]
+        La \emph{distribución poblacional} sería la normal de arriba para algún valor $\theta^*=(\mu,\sigma^2)$ fijo pero desconocido para nosotros.
+        
+        \item La altura tiene una distribución descrita con una mezcla de dos distribuciones normales equiprobables con parámetros $(\mu_1,\sigma_1^2)$ y $(\mu_2,\sigma_2^2)$ que representan las alturas de mujeres y hombres en la población. En ese caso $\theta=\left(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2\right)$.       
+        La familia paramétrica sería:
+        \[f_{\theta}(x)=\frac{1}{2}\cdot\frac{1}{\sqrt{2\pi\sigma_1^2}} e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}+\frac{1}{2}\cdot\frac{1}{\sqrt{2\pi\sigma_2^2}} e^{-\frac{(x-\mu_2)^2}{2\sigma_2^2}},\qquad \theta\in\RR\times(0,\infty)\times\RR\times(0,\infty)\]
+        La \emph{distribución poblacional} sería esta mezcla de dos normales para algún valor $\theta^*$ fijo pero desconocido para nosotros, donde $\frac{1}{2}$ es el peso de cada componente al ser equiprobables.
     \end{enumerate}
 \end{examplex}
 
-Disponemos de una muestra de tamaño $n$ de la cantidad de interés (las alturas de $n=100$ personas en la población, por ejemplo). Asumimos que la muestra es una realización de variables aleatorias $X_1,\dots, X_n$ que son \emph{independientes} y que tienen la distribución verdadera de la altura cuando $\theta=\theta_0$.
+Disponemos de una muestra de tamaño $n$ de la cantidad de interés (las alturas de $n=100$ personas en la población, por ejemplo). Asumimos que la muestra es una realización de variables aleatorias $X_1,\dots, X_n$ que son \emph{independientes} y que tienen la distribución poblacional (es decir la distribución paramétrica cuando $\theta=\theta^*$).
 
-\begin{definition} Un estimador insesgado de un parámetro $\beta$ es una función $T(X_1,\dots, X_n)$ de la muestra que cumple 
-    \[\EE[T(X_1,\dots, X_n)]= \beta\]    
+\begin{definition} Un estimador insesgado de una función  $\tau(\theta)$ de los parámetros de la familia es una función $T(X_1,\dots, X_n)$ de la muestra que cumple 
+    \[\forall \theta \left(\EE_\theta[T(X_1,\dots, X_n)]= \tau(\theta)\right) \]
+    donde $\EE_\theta[\bullet]$ significa que el valor esperado esta siendo calculado asumiendo que las $X_i$ tienen la distribución resultante de asumir que la distribución poblacional esta la dada por el parámetro $\theta$.    
 \end{definition}
 
 El siguiente Teorema es muy importante pues provee algunos ejemplos básicos de estimadores insesgados. La calidad de un estimador insesgado depende de su distribución y en particular de qué tan concentrada se encuentre alrededor de su media, así que es útil conocer las distribuciones de estimadores como se hace en la parte $(3)$.
@@ -330,6 +346,17 @@ El siguiente Teorema es muy importante pues provee algunos ejemplos básicos de 
     \end{enumerate} 
 \end{enumerate}
 \end{theorem}
+
+\subsection{Intervalos de confianza y pruebas de hipótesis}
+
+Nuestro estimador $T(X_1,\dots, X_n)$ del parámetro real $\theta^*$ es una función de las muestras y, por lo tanto, es una variable aleatoria. Cuando evaluamos $T$ en una realización de la muestra obtenemos un número y nos gustaría cuantificar qué tan lejos esta ese número del valor real $\theta_0$, o al menos garantizar que esta cerca con una probabilidad razonable. Los intervalos de confianza son una manera concreta de realizar esta idea. Más precisamente,
+
+\begin{definition} Dado un número $\alpha\in (0,1)$, decimos que dos estimadores $L(X_1,\dots, X_n)$ y $U(X_1,\dots, X_n)$ definen un \emph{intervalo de confianza} para el parámetro $\beta$ si sucede que
+    \[\PP\left\{ L(X_1,\dots, X_n)\leq \beta \leq U(X_1,\dots, X_n)\right\}=1-\alpha\]
+donde la probabilidad se calcula asumiendo que la muestra $X_i$ es una sucesión independiente que tiene la distribución de nuestro modelo para algún valor $\theta=\theta_0$ de los parámetros.    
+\end{definition}
+
+
 
 
 
