@@ -306,11 +306,11 @@ Asumimos:
 
 Nuestro objetivo es intentar estimar el valor verdadero de $\theta^*$ a partir del análisis de la cantidad en una muestra de tamaño $n$ extraída de la población. Por el carácter aleatorio de la muestra y de la cantidad de interés, nuestra estimación será necesariamente aleatoria. Nuestro propósito será entonces garantizar que, con alta probabilidad, nuestras estimaciones estén cerca (en un sentido a definir) del valor verdadero $\theta^*$ de los parámetros. Algunos ejemplos aclararán el punto de vista paramétrico,
 
-\begin{examplex}
+\begin{examplex} \label{ex: altura}
     Queremos entender la altura $Z$ de las personas en una población. Este problema permite muchos modelos paramétricos posibles. La selección del modelo paramétrico es nuestra \emph{hipótesis fundamental} y la que requiere más escrutinio (postular un modelo es más arte que ciencia y típicamente parte de observar los datos disponibles con suficiente atención). Para ilustrar las posibilidades podríamos considerar los siguientes modelos sencillos:
     \begin{enumerate}
         \item La altura tiene distribución normal con media desconocida $\mu$ y varianza conocida $\sigma^2=10^2$ en centímetros (recuerden que, para la distribución normal con varianza $\sigma^2$ el intervalo de $\mu \pm 3\sigma$ debe contener más del $99\%$ de los datos, lo cual en el caso de la altura se traduce a un rango de $\pm 30$ cm con la selección de varianza de arriba). En este caso $\theta=\mu$ y la familia paramétrica sería 
-        \[f_{\theta}(x)=\frac{1}{\sqrt{2\pi}} e^{-\frac{(x-\theta)^2}{2\cdot 10^2}}\]
+        \[f_{\theta}(x)=\frac{1}{10\sqrt{2\pi}} e^{-\frac{(x-\theta)^2}{2\cdot 10^2}}\]
         La \emph{distribución poblacional} sería la normal de arriba para algún valor $\theta^*=\mu$ fijo pero desconocido para nosotros.
 
         \item La altura tiene distribución normal con media $\mu$ y varianza $\sigma^2$, ambas desconocidas, es decir $\theta=(\mu,\sigma^2)$.
@@ -327,7 +327,7 @@ Nuestro objetivo es intentar estimar el valor verdadero de $\theta^*$ a partir d
 
 Disponemos de una muestra de tamaño $n$ de la cantidad de interés (las alturas de $n=100$ personas en la población, por ejemplo). Asumimos que la muestra es una realización de variables aleatorias $X_1,\dots, X_n$ que son \emph{independientes} y que tienen la distribución poblacional (es decir la distribución paramétrica cuando $\theta=\theta^*$).
 
-\begin{definition} Un estimador insesgado de una función  $\tau(\theta)$ de los parámetros de la familia es una función $T(X_1,\dots, X_n)$ de la muestra que cumple 
+\begin{definition} \label{def: insesgado} Un estimador insesgado de una función  $\tau(\theta)$ de los parámetros de la familia es una función $T(X_1,\dots, X_n)$ de la muestra que cumple 
     \[\forall \theta \left(\EE_\theta[T(X_1,\dots, X_n)]= \tau(\theta)\right) \]
     donde $\EE_\theta[\bullet]$ significa que el valor esperado esta siendo calculado asumiendo que las $X_i$ tienen la distribución resultante de asumir que la distribución poblacional esta la dada por el parámetro $\theta$.    
 \end{definition}
@@ -349,14 +349,90 @@ El siguiente Teorema es muy importante pues provee algunos ejemplos básicos de 
 
 \subsection{Intervalos de confianza y pruebas de hipótesis}
 
-Nuestro estimador $T(X_1,\dots, X_n)$ del parámetro real $\theta^*$ es una función de las muestras y, por lo tanto, es una variable aleatoria. Cuando evaluamos $T$ en una realización de la muestra obtenemos un número y nos gustaría cuantificar qué tan lejos esta ese número del valor real $\theta_0$, o al menos garantizar que esta cerca con una probabilidad razonable. Los intervalos de confianza son una manera concreta de realizar esta idea. Más precisamente,
+Nuestro estimador $T(X_1,\dots, X_n)$ del parámetro real $\theta^*$ es una función de las muestras y, por lo tanto, es una variable aleatoria. Cuando evaluamos $T$ en una realización de la muestra obtenemos un número y nos gustaría cuantificar qué tan lejos esta ese número del valor real $\tau(\theta^*)$, o al menos garantizar que esta cerca con una probabilidad razonable. Los intervalos de confianza son una manera concreta de realizar esta idea. Más precisamente,
 
-\begin{definition} Dado un número $\alpha\in (0,1)$, decimos que dos estimadores $L(X_1,\dots, X_n)$ y $U(X_1,\dots, X_n)$ definen un \emph{intervalo de confianza} para el parámetro $\beta$ si sucede que
-    \[\PP\left\{ L(X_1,\dots, X_n)\leq \beta \leq U(X_1,\dots, X_n)\right\}=1-\alpha\]
-donde la probabilidad se calcula asumiendo que la muestra $X_i$ es una sucesión independiente que tiene la distribución de nuestro modelo para algún valor $\theta=\theta_0$ de los parámetros.    
+\begin{definition} Dado un número $\alpha\in (0,1)$, decimos que dos estimadores $L(X_1,\dots, X_n)$ y $U(X_1,\dots, X_n)$ definen un \emph{intervalo de confianza} $1-\alpha$  para el parámetro $\tau(\theta)$ si para todo $\theta\in \Theta$ sucede que
+    \[\PP_{\theta}\left\{ L(X_1,\dots, X_n)\leq \tau(\theta) \leq U(X_1,\dots, X_n)\right\}=1-\alpha\]
+donde la probabilidad $\PP_{\theta}$ se calcula asumiendo que la muestra $X_i$ es una sucesión independiente que tiene la distribución de nuestro modelo con parámetro $\theta$. Como el valor verdadero $\theta^*$ es desconocido, exigimos esta igualdad para todos los valores posibles de $\theta$; en particular se cumple para $\theta=\theta^*$.    
 \end{definition}
 
 
+
+\begin{examplex} \label{ex: IC altura}
+Consideremos el primer modelo del Ejemplo~\ref{ex: altura}: la altura tiene distribución normal $\mathcal{N}(\mu,\sigma^2)$ con media $\mu=\theta$ desconocida y desviación estándar conocida $\sigma=10$ cm $=0.10$ m. Supongamos que medimos las alturas de $n=100$ personas y obtenemos una media muestral $\overline{x}=1.70$ m. Queremos un intervalo de confianza $95\%$ (es decir $\alpha=0.05$) para $\tau(\theta)=\mu$.
+
+Por el Teorema anterior, para todo $\theta=\mu\in\RR$, si las $X_j$ tienen distribución $\mathcal{N}(\mu,\sigma^2)$ entonces $\overline{X_n}$ tiene distribución $\mathcal{N}(\mu,\sigma^2/n)$, de modo que
+\[Z:=\frac{\overline{X_n}-\mu}{\sigma/\sqrt{n}}\]
+tiene distribución normal estándar \emph{sin importar el valor de $\mu$}. Si $z_{1-\alpha/2}$ denota el número que cumple $\Phi(z_{1-\alpha/2})=1-\frac{\alpha}{2}$ (para $\alpha=0.05$, $z_{0.975}\approx 1.96$), entonces para todo $\mu$
+\[\PP_\mu\left\{-z_{1-\alpha/2}\leq \frac{\overline{X_n}-\mu}{\sigma/\sqrt{n}}\leq z_{1-\alpha/2}\right\}=\Phi(z_{1-\alpha/2})-\Phi(-z_{1-\alpha/2})=1-\alpha.\]
+Despejando $\mu$ de las desigualdades, el evento de arriba coincide con
+\[\overline{X_n}-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\leq \mu\leq \overline{X_n}+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},\]
+así que los estimadores $L=\overline{X_n}-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$ y $U=\overline{X_n}+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$ definen un intervalo de confianza $1-\alpha$ para $\mu$. Con nuestros datos $\frac{\sigma}{\sqrt{n}}=\frac{0.10}{10}=0.01$ m y obtenemos el intervalo
+\[\left[1.70-1.96\cdot 0.01,\ 1.70+1.96\cdot 0.01\right]=[1.6804,\ 1.7196]\ \text{m}.\]
+Es importante interpretar correctamente este resultado: el valor verdadero $\mu$ es un número fijo y el intervalo $[1.6804,\ 1.7196]$ también lo es, así que $\mu$ está o no está en él. La afirmación probabilística es sobre el \emph{procedimiento}: si repitiéramos muchas veces el experimento de tomar $100$ personas y calcular el intervalo, aproximadamente el $95\%$ de los intervalos obtenidos contendría a $\mu$.
+
+Si en cambio usamos el segundo modelo (con $\sigma^2$ también desconocida), reemplazamos $\sigma$ por $S$ y, por la parte (3c) del Teorema anterior, $z_{1-\alpha/2}$ por el cuantil $t_{n-1,1-\alpha/2}$ de la distribución t de Student con $n-1$ grados de libertad, obteniendo el intervalo $\overline{X_n}\pm t_{n-1,1-\alpha/2}\frac{S}{\sqrt{n}}$.
+\end{examplex}
+
+Las \emph{pruebas de hipótesis} responden a una pregunta distinta, aunque relacionada: en lugar de estimar el valor verdadero $\theta^*$, queremos decidir, a partir de la muestra, si los datos son compatibles con una afirmación concreta sobre $\theta^*$. Trabajamos en el mismo contexto que en la Definición~\ref{def: insesgado}: tenemos un modelo paramétrico que depende de $\theta\in\Theta$, una muestra $X_1,\dots,X_n$ de variables independientes con la distribución poblacional, y escribimos $\PP_\theta\{\bullet\}$ para indicar que la probabilidad se calcula suponiendo que la distribución poblacional es la dada por el parámetro $\theta$. Partimos el conjunto de parámetros en dos partes disjuntas $\Theta=\Theta_0\cup\Theta_1$ y planteamos la \emph{hipótesis nula} $H_0:\theta^*\in\Theta_0$ frente a la \emph{hipótesis alternativa} $H_1:\theta^*\in\Theta_1$. Una \emph{prueba} consiste en un estadístico $T(X_1,\dots,X_n)$ y una \emph{región de rechazo} $R$: si el valor observado de $T$ cae en $R$ rechazamos $H_0$; en caso contrario decimos que los datos no aportan evidencia suficiente para rechazarla (lo cual \emph{no} es lo mismo que afirmar que $H_0$ es verdadera). Como la muestra es aleatoria podemos equivocarnos de dos maneras: rechazar $H_0$ cuando es verdadera (\emph{error de tipo I}) o no rechazarla cuando es falsa (\emph{error de tipo II}). El enfoque clásico consiste en garantizar primero que el error de tipo I tenga probabilidad pequeña, sea cual sea el valor del parámetro compatible con $H_0$.
+
+\begin{definition} Dado $\alpha\in(0,1)$, decimos que la prueba con estadístico $T$ y región de rechazo $R$ tiene \emph{nivel de significación} $\alpha$ si
+    \[\forall \theta\in\Theta_0\quad \left(\PP_\theta\left\{T(X_1,\dots,X_n)\in R\right\}\leq \alpha\right).\]
+Para $\theta\in\Theta_1$, el número $\pi(\theta):=\PP_\theta\{T(X_1,\dots,X_n)\in R\}$ se llama \emph{potencia} de la prueba en $\theta$, y la probabilidad de cometer un error de tipo II cuando el parámetro es $\theta$ es $1-\pi(\theta)$.
+\end{definition}
+
+\begin{examplex} En el contexto del Ejemplo~\ref{ex: IC altura} queremos probar $H_0:\mu=1.75$ m frente a $H_1:\mu\neq 1.75$ m, es decir $\Theta_0=\{1.75\}$ y $\Theta_1=\RR\setminus\{1.75\}$. Si $H_0$ es verdadera, el estadístico
+\[Z_0:=\frac{\overline{X_n}-1.75}{\sigma/\sqrt{n}}\]
+tiene distribución normal estándar, así que la prueba que rechaza $H_0$ cuando $|Z_0|>z_{1-\alpha/2}$ tiene nivel de significación exactamente $\alpha$. Con nuestros datos $Z_0=\frac{1.70-1.75}{0.01}=-5$ y, como $|-5|>1.96$, rechazamos $H_0$ al nivel $\alpha=0.05$. Observemos que no rechazamos $H_0:\mu=\mu_0$ si y solo si
+\[\overline{X_n}-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\leq \mu_0\leq \overline{X_n}+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},\]
+es decir, si y solo si $\mu_0$ pertenece al intervalo de confianza $1-\alpha$ del Ejemplo~\ref{ex: IC altura} (y en efecto $1.75\notin[1.6804,\ 1.7196]$). Esta dualidad entre intervalos de confianza y pruebas de hipótesis es general.
+\end{examplex}
+
+\section{Estimación por máxima verosimilitud}
+
+En la sección anterior vimos cómo evaluar la calidad de un estimador (si es insesgado, qué tan concentrado está, cómo construir intervalos de confianza a partir de él), pero los estimadores $\overline{X_n}$ y $S^2$ aparecieron ``por intuición''. El método de \emph{máxima verosimilitud} es una receta general para construir estimadores a partir del modelo paramétrico. Trabajamos en el mismo contexto que en la Definición~\ref{def: insesgado}: un modelo paramétrico $\{f_\theta\}_{\theta\in\Theta}$, donde $f_\theta$ es la densidad (si la cantidad de interés es continua) o la función de probabilidad puntual $f_\theta(x)=\PP_\theta\{X=x\}$ (si es discreta), y una muestra $X_1,\dots,X_n$ de variables independientes con la distribución poblacional $f_{\theta^*}$.
+
+La idea es la siguiente: una vez observados los valores $x_1,\dots,x_n$ de la muestra, nos preguntamos para qué valor del parámetro esos datos eran \emph{más probables}. Por independencia, si el parámetro fuera $\theta$, la probabilidad (o densidad conjunta) de observar exactamente $x_1,\dots,x_n$ sería el producto $\prod_{j=1}^n f_\theta(x_j)$. Elegimos como estimación el $\theta$ que hace este número lo más grande posible.
+
+\begin{definition} \label{def: verosimilitud} Dados los valores observados $x_1,\dots,x_n$, la \emph{función de verosimilitud} es la función del parámetro
+    \[\calL(\theta):=\calL(\theta;x_1,\dots,x_n)=\prod_{j=1}^n f_\theta(x_j),\qquad \theta\in\Theta,\]
+y la \emph{log-verosimilitud} es $\ell(\theta):=\log \calL(\theta)=\sum_{j=1}^n \log f_\theta(x_j)$. Un \emph{estimador de máxima verosimilitud} (EMV) de $\theta$ es un valor $\widehat{\theta}=\widehat{\theta}(x_1,\dots,x_n)\in\Theta$ que maximiza $\calL$, es decir
+    \[\calL(\widehat{\theta})\geq \calL(\theta)\quad\text{para todo }\theta\in\Theta.\]
+Al reemplazar los valores observados $x_j$ por las variables aleatorias $X_j$ obtenemos el estimador $\widehat{\theta}(X_1,\dots,X_n)$, que es una variable aleatoria como cualquier otro estimador.
+\end{definition}
+
+Observemos que $\calL(\theta)$ se mira como función de $\theta$ con los datos fijos, al revés de lo que hacemos en probabilidad, donde fijamos $\theta$ y miramos la distribución de los datos. Como el logaritmo es estrictamente creciente, $\calL$ y $\ell$ alcanzan su máximo en los mismos puntos; en la práctica casi siempre se trabaja con $\ell$ porque transforma el producto en una suma, que es mucho más fácil de derivar. Cuando $\Theta$ es un intervalo abierto y $\ell$ es diferenciable, el procedimiento usual es:
+\begin{enumerate}
+    \item Calcular $\ell(\theta)$ y resolver la \emph{ecuación de verosimilitud} $\ell'(\theta)=0$.
+    \item Verificar que la solución es efectivamente un máximo global (por ejemplo comprobando que $\ell'(\theta)>0$ a la izquierda y $\ell'(\theta)<0$ a la derecha, o que $\ell''<0$ en todo $\Theta$).
+    \item Analizar aparte los casos de borde (datos para los que el máximo no se alcanza en el interior de $\Theta$).
+\end{enumerate}
+
+\begin{examplex} \label{ex: EMV Poisson} Supongamos que la cantidad de interés es un conteo (por ejemplo el número de llamadas que recibe una central telefónica en un minuto) y que la modelamos con una distribución de Poisson de parámetro desconocido $\theta=\lambda\in\Theta=(0,\infty)$:
+\[f_\lambda(x)=\PP_\lambda\{X=x\}=e^{-\lambda}\frac{\lambda^x}{x!},\qquad x=0,1,2,\dots\]
+Dados los conteos observados $x_1,\dots,x_n$, la función de verosimilitud es
+\[\calL(\lambda)=\prod_{j=1}^n e^{-\lambda}\frac{\lambda^{x_j}}{x_j!}=e^{-n\lambda}\,\frac{\lambda^{\sum_{j=1}^n x_j}}{\prod_{j=1}^n x_j!}\]
+y la log-verosimilitud es
+\[\ell(\lambda)=-n\lambda+\left(\sum_{j=1}^n x_j\right)\log\lambda-\sum_{j=1}^n\log(x_j!).\]
+El último término no depende de $\lambda$, así que no influye en la maximización. Derivando,
+\[\ell'(\lambda)=-n+\frac{1}{\lambda}\sum_{j=1}^n x_j,\]
+y la ecuación de verosimilitud $\ell'(\lambda)=0$ tiene la única solución
+\[\widehat{\lambda}=\frac{1}{n}\sum_{j=1}^n x_j=\overline{x}.\]
+Si $\sum_j x_j>0$ esta solución es un máximo global: $\ell''(\lambda)=-\frac{1}{\lambda^2}\sum_j x_j<0$ para todo $\lambda>0$, así que $\ell$ es estrictamente cóncava (equivalentemente, $\ell'(\lambda)>0$ para $\lambda<\overline{x}$ y $\ell'(\lambda)<0$ para $\lambda>\overline{x}$). Si todos los conteos son cero, $\ell(\lambda)=-n\lambda$ es decreciente y el supremo se alcanza cuando $\lambda\to 0$; en ese caso se adopta la convención $\widehat{\lambda}=0=\overline{x}$. En conclusión, el estimador de máxima verosimilitud de $\lambda$ es la media muestral
+\[\widehat{\lambda}(X_1,\dots,X_n)=\overline{X_n}.\]
+Por ejemplo, si en $n=5$ minutos observamos $2,0,3,1,4$ llamadas, la estimación es $\widehat{\lambda}=\frac{10}{5}=2$ llamadas por minuto.
+
+Podemos ahora estudiar este estimador con las herramientas de la sección anterior. Como una variable de Poisson de parámetro $\lambda$ tiene media $\lambda$ y varianza $\lambda$, se tiene para todo $\lambda>0$ que
+\[\EE_\lambda[\widehat{\lambda}]=\lambda\qquad\text{y}\qquad {\rm Var}_\lambda(\widehat{\lambda})=\frac{\lambda}{n},\]
+de modo que $\widehat{\lambda}$ es un estimador insesgado de $\lambda$ cuya varianza tiende a cero cuando $n\to\infty$. Además, por el Teorema del Límite Central, para $n$ grande
+\[\frac{\widehat{\lambda}-\lambda}{\sqrt{\lambda/n}}\]
+tiene distribución aproximadamente normal estándar, lo que permite construir intervalos de confianza aproximados $1-\alpha$ de la forma $\widehat{\lambda}\pm z_{1-\alpha/2}\sqrt{\widehat{\lambda}/n}$ (reemplazando la varianza desconocida $\lambda/n$ por su estimación $\widehat{\lambda}/n$).
+\end{examplex}
+
+\begin{remark} El estimador de máxima verosimilitud no siempre es insesgado. Por ejemplo, en el segundo modelo del Ejemplo~\ref{ex: altura} (normal con $\theta=(\mu,\sigma^2)$ desconocido) un cálculo análogo, igualando a cero las derivadas parciales de $\ell(\mu,\sigma^2)$, da
+\[\widehat{\mu}=\overline{X_n},\qquad \widehat{\sigma^2}=\frac{1}{n}\sum_{j=1}^n\left(X_j-\overline{X_n}\right)^2=\frac{n-1}{n}S^2,\]
+y como $S^2$ es insesgado para $\sigma^2$ se tiene $\EE_\theta[\widehat{\sigma^2}]=\frac{n-1}{n}\sigma^2\neq\sigma^2$. El sesgo desaparece cuando $n\to\infty$. Más en general (y sin que sea necesario conocer la demostración), bajo condiciones de regularidad sobre el modelo el EMV es \emph{consistente}, es decir, se concentra alrededor del valor verdadero $\theta^*$ cuando $n\to\infty$, y tiene distribución aproximadamente normal para $n$ grande, como vimos explícitamente en el caso de Poisson.
+\end{remark}
 
 
 
